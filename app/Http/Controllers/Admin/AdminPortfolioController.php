@@ -51,6 +51,46 @@ class AdminPortfolioController extends Controller
         return redirect()->route('admin.portfolio.edit')->with('status', 'Portofolio disimpan.');
     }
 
+    public function storeCategory(): RedirectResponse
+    {
+        $portfolio = ConfigWriter::read('portfolio');
+        $categories = $portfolio['categories'] ?? [];
+        $index = count($categories) + 1;
+
+        $categories[] = [
+            'slug' => 'kategori-'.$index,
+            'title' => 'Kategori Baru '.$index,
+            'description' => 'Deskripsi kategori.',
+            'items' => ['Item 1'],
+        ];
+
+        ConfigWriter::write('portfolio', [
+            'stats' => $portfolio['stats'] ?? ['samp' => 0, 'web' => 0],
+            'categories' => $categories,
+        ]);
+
+        return redirect()->route('admin.portfolio.edit')->with('status', 'Kategori ditambahkan.');
+    }
+
+    public function destroyCategory(int $index): RedirectResponse
+    {
+        $portfolio = ConfigWriter::read('portfolio');
+        $categories = $portfolio['categories'] ?? [];
+
+        if (count($categories) <= 1 || ! isset($categories[$index])) {
+            return redirect()->route('admin.portfolio.edit')->with('status', 'Minimal harus ada satu kategori.');
+        }
+
+        unset($categories[$index]);
+
+        ConfigWriter::write('portfolio', [
+            'stats' => $portfolio['stats'] ?? ['samp' => 0, 'web' => 0],
+            'categories' => array_values($categories),
+        ]);
+
+        return redirect()->route('admin.portfolio.edit')->with('status', 'Kategori dihapus.');
+    }
+
     /**
      * @return list<string>
      */

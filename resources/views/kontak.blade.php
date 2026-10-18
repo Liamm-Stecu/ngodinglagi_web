@@ -53,7 +53,7 @@
                             {{ config('contact.whatsapp.display') }}
                         </p>
                         <a
-                            href="{{ config('contact.whatsapp.url') }}"
+                            href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin mendiskusikan kebutuhan saya.') }}"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="btn-primary sm:ml-auto"

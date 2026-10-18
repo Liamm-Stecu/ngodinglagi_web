@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\View\View;
 
 class AdminLoginController extends Controller
@@ -29,6 +30,8 @@ class AdminLoginController extends Controller
         if (! hash_equals($expected, $request->string('password')->toString())) {
             return back()->withErrors(['password' => 'Password salah.'])->onlyInput('password');
         }
+
+        RateLimiter::clear('admin-login:'.$request->ip());
 
         $request->session()->put('admin_auth', true);
         $request->session()->regenerate();

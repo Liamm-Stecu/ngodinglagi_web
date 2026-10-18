@@ -89,10 +89,46 @@
             </fieldset>
         @endforeach
 
-        <div class="animate-fade-up flex gap-3" style="animation-delay: {{ 60 + count($services) * 80 }}ms">
+        <div class="animate-fade-up flex flex-wrap gap-3" style="animation-delay: {{ 60 + count($services) * 80 }}ms">
             <button type="submit" class="admin-btn">Simpan semua</button>
             <a href="{{ route('layanan') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat halaman</a>
         </div>
     </form>
+
+    <form method="POST" action="{{ route('admin.services.store') }}" class="mt-4">
+        @csrf
+        <button type="submit" class="admin-btn admin-btn-ghost w-full">+ Tambah layanan</button>
+    </form>
+
+    <div class="mt-6 space-y-3">
+        @foreach ($services as $i => $service)
+            <div class="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3">
+                <p class="text-sm font-medium text-slate-700">
+                    {{ data_get($service, 'title') }}
+                    <span class="ml-2 text-xs text-slate-400">{{ count(data_get($service, 'pricing.tiers', [])) }} tier</span>
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <form method="POST" action="{{ route('admin.services.tier.store', $i) }}">
+                        @csrf
+                        <button type="submit" class="admin-btn admin-btn-ghost px-3 py-1.5 text-xs">+ Tier</button>
+                    </form>
+                    @foreach (data_get($service, 'pricing.tiers', []) as $t => $tier)
+                        <form method="POST" action="{{ route('admin.services.tier.destroy', [$i, $t]) }}">
+                            @csrf
+                            <button type="submit" class="inline-flex items-center rounded-lg border border-red-200 px-2.5 py-1.5 text-xs font-medium text-red-600 transition hover:bg-red-50" title="Hapus tier {{ data_get($tier, 'name') }}">
+                                × {{ data_get($tier, 'name') }}
+                            </button>
+                        </form>
+                    @endforeach
+                    <form method="POST" action="{{ route('admin.services.destroy', $i) }}" onsubmit="return confirm('Hapus layanan ini?')">
+                        @csrf
+                        <button type="submit" class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 transition hover:bg-red-100">
+                            Hapus layanan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
 </div>
 @endsection

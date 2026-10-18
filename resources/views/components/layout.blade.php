@@ -4,11 +4,61 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $title ?? 'ngodinglagi' }}</title>
-        <meta name="description" content="{{ $description ?? 'Jasa web development, SA-MP/Open.MP development, dan VPS/server administration.' }}">
+        @php
+            $pageTitle = $title ?? 'ngodinglagi — Jasa Web, SA-MP/Open.MP & VPS';
+            $pageDescription = $description ?? 'Jasa web development, SA-MP/Open.MP development, dan VPS/server administration. Komunikasi jelas, hasil siap dipakai.';
+            $canonicalUrl = url()->current();
+        @endphp
+
+        <title>{{ $pageTitle }}</title>
+        <meta name="description" content="{{ $pageDescription }}">
+        <link rel="canonical" href="{{ $canonicalUrl }}">
+
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="ngodinglagi">
+        <meta property="og:locale" content="id_ID">
+        <meta property="og:title" content="{{ $pageTitle }}">
+        <meta property="og:description" content="{{ $pageDescription }}">
+        <meta property="og:url" content="{{ $canonicalUrl }}">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="{{ $pageTitle }}">
+        <meta name="twitter:description" content="{{ $pageDescription }}">
+
+        <script>
+            (function () {
+                try {
+                    var t = localStorage.getItem('theme');
+                    if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                        document.documentElement.classList.add('dark');
+                    }
+                } catch (e) {}
+            })();
+        </script>
 
         @fonts
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script type="application/ld+json">{!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'ProfessionalService',
+            'name' => 'ngodinglagi',
+            'description' => 'Jasa web development, SA-MP/Open.MP development, dan VPS/server administration.',
+            'url' => route('home'),
+            'telephone' => config('contact.whatsapp.display'),
+            'areaServed' => 'ID',
+            'sameAs' => array_values(array_filter([
+                config('contact.instagram.url'),
+            ])),
+            'makesOffer' => collect(config('services.services'))->map(fn ($service) => [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => $service['title'],
+                    'description' => $service['short'] ?? '',
+                ],
+            ])->values()->all(),
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
 
         <noscript>
             <style>
@@ -51,8 +101,9 @@
                     </span>
                 </a>
 
-                <nav aria-label="Navigasi utama" class="min-w-0">
-                    <ul class="flex items-center gap-0.5 sm:gap-2">
+                <div class="flex items-center gap-1 sm:gap-2">
+                    <nav aria-label="Navigasi utama" class="min-w-0">
+                        <ul class="flex items-center gap-0.5 sm:gap-2">
                         <li>
                             <a
                                 href="{{ route('home') }}"
@@ -107,6 +158,29 @@
                         </li>
                     </ul>
                 </nav>
+
+                <button
+                    type="button"
+                    data-theme-toggle
+                    class="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    aria-label="Ganti tema terang atau gelap"
+                >
+                    <svg class="size-4 dark:hidden" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                    <svg class="hidden size-4 dark:block" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2" />
+                        <path d="M12 20v2" />
+                        <path d="m4.93 4.93 1.41 1.41" />
+                        <path d="m17.66 17.66 1.41 1.41" />
+                        <path d="M2 12h2" />
+                        <path d="M20 12h2" />
+                        <path d="m6.34 17.66-1.41 1.41" />
+                        <path d="m19.07 4.93-1.41 1.41" />
+                    </svg>
+                </button>
+                </div>
             </div>
         </header>
 

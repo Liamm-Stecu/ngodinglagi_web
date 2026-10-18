@@ -25,6 +25,17 @@ class AdminPanelTest extends TestCase
             ->assertRedirect(route('admin.login'));
     }
 
+    public function test_admin_login_is_rate_limited(): void
+    {
+        foreach (range(1, 5) as $attempt) {
+            $this->post(route('admin.login'), ['password' => 'wrong-password-'.$attempt])
+                ->assertSessionHasErrors('password');
+        }
+
+        $this->post(route('admin.login'), ['password' => 'wrong-password'])
+            ->assertStatus(429);
+    }
+
     public function test_admin_login_redirects_to_dashboard(): void
     {
         $this->post(route('admin.login'), ['password' => config('admin.password')])
@@ -118,5 +129,65 @@ class AdminPanelTest extends TestCase
             ->get(route('admin.partner.edit'))
             ->assertOk()
             ->assertSee('affiliate_url');
+    }
+
+    public function test_admin_can_add_and_remove_service(): void
+    {
+        $original = ConfigWriter::read('services');
+        $before = count($original['services'] ?? []);
+
+        try {
+            $this->actingAsAdmin()->post(route('admin.services.store'))
+                ->assertRedirect(route('admin.services.edit'));
+
+            $this->assertCount($before + 1, ConfigWriter::read('services')['services']);
+
+            $this->actingAsAdmin()->post(route('admin.services.destroy', $before))
+                ->assertRedirect(route('admin.services.edit'));
+
+            $this->assertCount($before, ConfigWriter::read('services')['services']);
+        } finally {
+            ConfigWriter::write('services', $original);
+        }
+    }
+
+    public function test_admin_cannot_remove_last_service(): void
+    {
+        $original = ConfigWriter::read('services');
+        $lastIndex = count($original['services']) - 1;
+
+        try {
+            while (count(ConfigWriter::read('services')['services'] ?? []) > 1) {
+                $count = count(ConfigWriter::read('services')['services']);
+                $this->actingAsAdmin()->post(route('admin.services.destroy', $count - 1));
+            }
+
+            $this->actingAsAdmin()->post(route('admin.services.destroy', 0))
+                ->assertSessionHas('status');
+
+            $this->assertCount(1, ConfigWriter::read('services')['services']);
+        } finally {
+            ConfigWriter::write('services', $original);
+        }
+    }
+
+    public function test_admin_can_add_and_remove_portfolio_category(): void
+    {
+        $original = ConfigWriter::read('portfolio');
+        $before = count($original['categories'] ?? []);
+
+        try {
+            $this->actingAsAdmin()->post(route('admin.portfolio.category.store'))
+                ->assertRedirect(route('admin.portfolio.edit'));
+
+            $this->assertCount($before + 1, ConfigWriter::read('portfolio')['categories']);
+
+            $this->actingAsAdmin()->post(route('admin.portfolio.category.destroy', $before))
+                ->assertRedirect(route('admin.portfolio.edit'));
+
+            $this->assertCount($before, ConfigWriter::read('portfolio')['categories']);
+        } finally {
+            ConfigWriter::write('portfolio', $original);
+        }
     }
 }

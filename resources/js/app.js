@@ -111,6 +111,28 @@ function initStatCounters() {
     counters.forEach((el) => observer.observe(el));
 }
 
+function initThemeToggle() {
+    const root = document.documentElement;
+    const buttons = document.querySelectorAll('[data-theme-toggle]');
+
+    if (!buttons.length) {
+        return;
+    }
+
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const next = root.classList.contains('dark') ? 'light' : 'dark';
+            root.classList.toggle('dark', next === 'dark');
+
+            try {
+                localStorage.setItem('theme', next);
+            } catch {
+                /* storage unavailable — ignore */
+            }
+        });
+    });
+}
+
 function initCopyButtons() {
     const buttons = document.querySelectorAll('[data-copy]');
 
@@ -151,5 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initHeaderScroll();
     initStatCounters();
+    initThemeToggle();
     initCopyButtons();
 });

@@ -63,10 +63,29 @@
             </fieldset>
         @endforeach
 
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
             <button type="submit" class="admin-btn">Simpan</button>
             <a href="{{ route('portofolio') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat halaman</a>
         </div>
     </form>
+
+    <form method="POST" action="{{ route('admin.portfolio.category.store') }}" class="mt-4">
+        @csrf
+        <button type="submit" class="admin-btn admin-btn-ghost w-full">+ Tambah kategori</button>
+    </form>
+
+    <div class="mt-6 space-y-2">
+        @foreach (data_get($portfolio, 'categories', []) as $i => $category)
+            <div class="flex items-center justify-between gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3">
+                <p class="text-sm font-medium text-slate-700">{{ data_get($category, 'title') }}</p>
+                <form method="POST" action="{{ route('admin.portfolio.category.destroy', $i) }}" onsubmit="return confirm('Hapus kategori ini?')">
+                    @csrf
+                    <button type="submit" class="inline-flex items-center rounded-lg border border-red-200 bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-700 transition hover:bg-red-100">
+                        Hapus
+                    </button>
+                </form>
+            </div>
+        @endforeach
+    </div>
 </div>
 @endsection

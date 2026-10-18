@@ -60,6 +60,87 @@ class AdminServicesController extends Controller
         return redirect()->route('admin.services.edit')->with('status', 'Layanan disimpan.');
     }
 
+    public function store(): RedirectResponse
+    {
+        $services = ConfigWriter::read('services')['services'] ?? [];
+        $index = count($services) + 1;
+
+        $services[] = [
+            'slug' => 'layanan-'.$index,
+            'title' => 'Layanan Baru '.$index,
+            'short' => 'Deskripsi singkat layanan.',
+            'description' => 'Deskripsi lengkap layanan ini.',
+            'for' => ['Kebutuhan 1'],
+            'items' => ['Cakupan kerja 1'],
+            'pricing' => [
+                'label' => 'Mulai dari',
+                'tiers' => [
+                    ['name' => 'Paket A', 'price' => 'Rp 0', 'note' => 'Catatan paket'],
+                ],
+            ],
+        ];
+
+        ConfigWriter::write('services', ['services' => $services]);
+
+        return redirect()->route('admin.services.edit')->with('status', 'Layanan ditambahkan.');
+    }
+
+    public function destroy(int $index): RedirectResponse
+    {
+        $services = ConfigWriter::read('services')['services'] ?? [];
+
+        if (count($services) <= 1 || ! isset($services[$index])) {
+            return redirect()->route('admin.services.edit')->with('status', 'Minimal harus ada satu layanan.');
+        }
+
+        unset($services[$index]);
+
+        ConfigWriter::write('services', ['services' => array_values($services)]);
+
+        return redirect()->route('admin.services.edit')->with('status', 'Layanan dihapus.');
+    }
+
+    public function storeTier(int $index): RedirectResponse
+    {
+        $services = ConfigWriter::read('services')['services'] ?? [];
+
+        if (! isset($services[$index])) {
+            return redirect()->route('admin.services.edit');
+        }
+
+        $services[$index]['pricing']['tiers'][] = [
+            'name' => 'Paket Baru',
+            'price' => 'Rp 0',
+            'note' => '',
+        ];
+
+        ConfigWriter::write('services', ['services' => $services]);
+
+        return redirect()->route('admin.services.edit')->with('status', 'Tier harga ditambahkan.');
+    }
+
+    public function destroyTier(int $index, int $tierIndex): RedirectResponse
+    {
+        $services = ConfigWriter::read('services')['services'] ?? [];
+
+        if (! isset($services[$index])) {
+            return redirect()->route('admin.services.edit');
+        }
+
+        $tiers = $services[$index]['pricing']['tiers'] ?? [];
+
+        if (count($tiers) <= 1 || ! isset($tiers[$tierIndex])) {
+            return redirect()->route('admin.services.edit')->with('status', 'Minimal harus ada satu tier.');
+        }
+
+        unset($tiers[$tierIndex]);
+        $services[$index]['pricing']['tiers'] = array_values($tiers);
+
+        ConfigWriter::write('services', ['services' => $services]);
+
+        return redirect()->route('admin.services.edit')->with('status', 'Tier harga dihapus.');
+    }
+
     /**
      * @return list<string>
      */

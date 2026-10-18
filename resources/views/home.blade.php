@@ -179,6 +179,18 @@
                             <p class="text-xs font-medium text-primary">
                                 Mulai {{ data_get($services, '0.pricing.tiers.0.price', '') }}
                             </p>
+                            <a
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan Web Development & Deployment.') }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
+                            >
+                                Tanya via WhatsApp
+                                <svg aria-hidden="true" class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
                         </div>
                     </article>
 
@@ -210,6 +222,18 @@
                             <p class="text-xs font-medium text-primary">
                                 Mulai {{ data_get($services, '1.pricing.tiers.0.price', '') }}
                             </p>
+                            <a
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan SA-MP / Open.MP.') }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
+                            >
+                                Tanya via WhatsApp
+                                <svg aria-hidden="true" class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
                         </div>
                     </article>
 
@@ -240,6 +264,18 @@
                             <p class="text-xs font-medium text-primary">
                                 Mulai {{ data_get($services, '2.pricing.tiers.0.price', '') }}
                             </p>
+                            <a
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan VPS & Server Admin.') }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
+                            >
+                                Tanya via WhatsApp
+                                <svg aria-hidden="true" class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
                         </div>
                     </article>
                 </div>

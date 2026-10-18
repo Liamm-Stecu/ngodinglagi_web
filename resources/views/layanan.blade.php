@@ -148,6 +148,21 @@
                                     </li>
                                 @endforeach
                             </ul>
+
+                            <div class="mt-4">
+                                <a
+                                    href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan '.$service['title'].'.') }}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="btn-primary"
+                                >
+                                    Tanya layanan ini
+                                    <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                        <path d="m12 5 7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     @endif
                 </div>

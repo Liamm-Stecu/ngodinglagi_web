@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
@@ -33,6 +35,26 @@
     --animate-rise-in: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     --animate-fade-up: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
     --animate-copy-pulse: copy-pulse 0.3s ease-out;
+}
+
+.dark {
+    --color-on-primary: #042f2e;
+    --color-on-secondary: #042f2e;
+    --color-background: #0b1220;
+    --color-foreground: #f1f5f9;
+    --color-card: #111827;
+    --color-card-foreground: #f1f5f9;
+    --color-muted: #1e293b;
+    --color-muted-foreground: #94a3b8;
+    --color-border: #1f2937;
+    --color-primary: #14b8a6;
+    --color-secondary: #2dd4bf;
+    --color-accent: #0d9488;
+    --color-ring: #2dd4bf;
+
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
+    --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.4), 0 14px 28px rgba(0, 0, 0, 0.3);
+    --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 @keyframes brand-in {

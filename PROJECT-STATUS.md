@@ -76,25 +76,34 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Header hero + strip alur kerja 3 langkah (Diskusi → Dikerjakan → Diserahkan) — tiap langkah rise-in stagger
 - 3 kartu detail layanan dengan icon chip, deskripsi, cakupan kerja, cocok untuk — reveal scale
 - **Harga placeholder** per tier ("Mulai dari") — edit via admin
+- **CTA WhatsApp kontekstual** per layanan (`WaLink` pre-fill: "Halo ngodinglagi, saya ingin tanya layanan …")
 - CTA
 
 ### `/kontak`
-- Kartu WhatsApp utama, Instagram, Discord (salin + copy-pulse), tips, link portofolio — cascade reveal per kartu
+- Kartu WhatsApp utama (pre-fill diskusi), Instagram, Discord (salin + copy-pulse), tips, link portofolio — cascade reveal per kartu
 
 ### `/admin` (panel — **tanpa nav publik**)
 - Akses: ketik `/admin` di URL (tidak muncul di menu website)
 - Login password dari `ADMIN_PASSWORD` di `.env` (default `ngodinglagi123` — **ganti di production**)
+- **Rate limit login: 5 attempt/menit per IP** (`throttle:admin-login`), reset saat login sukses
 - Middleware `admin` + layout **sidebar gelap** + view login standalone (hero gradien teal)
 - Dashboard: KPI count-up (proyek, layanan, tier harga, kategori), **donut chart** komposisi SA-MP vs website (SVG), **bar chart** harga tier (tanpa library), pintasan edit
 - Halaman: Kontak, Layanan+harga, Portofolio, Mitra affiliate
+- **CRUD layanan**: tambah/hapus layanan + tier harga (min 1 layanan & 1 tier per layanan)
+- **CRUD kategori portofolio**: tambah/hapus kategori (min 1)
 - Animasi: `fade-up` / `rise-in` (stagger KPI, fieldset form, nav sidebar), hover lift KPI, bar-grow, donut draw, hormati `prefers-reduced-motion`
 - Semua simpan menulis ulang `config/*.php` via `ConfigWriter`
+
+### SEO & dark mode
+- OG/Twitter card + canonical + JSON-LD `ProfessionalService` (layout publik)
+- `/sitemap.xml` + `/robots.txt` (route dinamis; `public/robots.txt` dihapus agar tidak menimpa)
+- Dark mode: class `.dark` di `<html>`, toggle di header, token di-override di `app.css`, preferensi disimpan di `localStorage`
 
 ## Pemeriksaan terakhir
 
 | Cek | Hasil | Kapan |
 |-----|--------|--------|
-| `php artisan test --compact` | ✅ **17/17 passed** (78 assertions) | 2026-10-18 |
+| `php artisan test --compact` | ✅ **24/24 passed** (119 assertions) | 2026-10-18 |
 | `vendor/bin/pint` | ✅ passed | 2026-10-18 |
 | `npm run build` | ✅ sukses | 2026-10-18 |
 | Browser headless `/` `/layanan` | ✅ tanpa overflow 375/1440 | 2026-10-18 |
@@ -103,12 +112,12 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 ## Belum selesai / belum diverifikasi
 
 - [ ] Nama proyek nyata untuk daftar portofolio
-- [ ] Dark mode — token di MASTER mendukung, implementasi belum ada
+- [x] Dark mode — token + toggle header (2026-10-18); admin panel masih light-only
 - [ ] Visual check di browser non-Edge / perangkat fisik — belum
 - [ ] Deployment — belum
-- [ ] Admin: tambah/hapus layanan, tier harga, kategori — form edit only
+- [x] Admin: tambah/hapus layanan, tier harga, kategori — CRUD via form post (2026-10-18)
 - [ ] Admin: ubah password via UI (baru via `.env`)
-- [ ] Admin: proteksi rate limit brute force — belum
+- [x] Admin: proteksi rate limit brute force — 5/menit per IP (2026-10-18)
 - [ ] Ganti `ADMIN_PASSWORD` default sebelum production
 
 ## Catatan lintas-session

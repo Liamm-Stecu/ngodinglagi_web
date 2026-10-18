@@ -83,4 +83,39 @@ class HomePageTest extends TestCase
             ->assertSee('Setup VPS')
             ->assertSee('Rp 250.000');
     }
+
+    public function test_layanan_page_has_contextual_whatsapp_cta(): void
+    {
+        $response = $this->get(route('layanan'))->assertOk();
+
+        $this->assertStringContainsString(
+            'text='.rawurlencode('Halo ngodinglagi, saya ingin tanya layanan Web Development & Deployment.'),
+            $response->getContent()
+        );
+    }
+
+    public function test_sitemap_and_robots_are_available(): void
+    {
+        $this->get(route('sitemap'))
+            ->assertOk()
+            ->assertHeader('Content-Type', 'application/xml')
+            ->assertSee(route('home'), false)
+            ->assertSee(route('layanan'), false);
+
+        $this->get(route('robots'))
+            ->assertOk()
+            ->assertSee('User-agent: *', false)
+            ->assertSee('Disallow: /admin', false)
+            ->assertSee(route('sitemap'), false);
+    }
+
+    public function test_layout_includes_seo_and_structured_data(): void
+    {
+        $response = $this->get(route('home'))->assertOk();
+
+        $this->assertStringContainsString('og:title', $response->getContent());
+        $this->assertStringContainsString('twitter:card', $response->getContent());
+        $this->assertStringContainsString('ProfessionalService', $response->getContent());
+        $this->assertStringContainsString('application/ld+json', $response->getContent());
+    }
 }
