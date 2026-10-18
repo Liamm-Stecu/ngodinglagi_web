@@ -14,7 +14,7 @@
     </div>
 
     @if (session('status'))
-        <div class="admin-flash mb-4">{{ session('status') }}</div>
+        <div class="admin-flash animate-fade-up mb-4">{{ session('status') }}</div>
     @endif
 
     @if ($errors->any())
@@ -27,7 +27,7 @@
         @csrf
 
         @foreach ($services as $i => $service)
-            <fieldset class="admin-card space-y-4">
+            <fieldset class="admin-card animate-rise-in space-y-4" style="animation-delay: {{ 60 + $i * 80 }}ms">
                 <legend class="px-2 font-heading text-sm font-semibold text-teal-700">
                     {{ data_get($service, 'title') }}
                 </legend>
@@ -89,7 +89,7 @@
             </fieldset>
         @endforeach
 
-        <div class="flex gap-3">
+        <div class="animate-fade-up flex gap-3" style="animation-delay: {{ 60 + count($services) * 80 }}ms">
             <button type="submit" class="admin-btn">Simpan semua</button>
             <a href="{{ route('layanan') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat halaman</a>
         </div>

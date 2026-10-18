@@ -10,6 +10,19 @@ function initScrollReveal() {
         return;
     }
 
+    document.querySelectorAll('[data-stagger]').forEach((parent) => {
+        let index = 0;
+
+        parent.querySelectorAll('[data-reveal]').forEach((el) => {
+            if (el.style.transitionDelay) {
+                return;
+            }
+
+            el.style.transitionDelay = `${Math.min(index * 50, 200)}ms`;
+            index += 1;
+        });
+    });
+
     if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
         nodes.forEach((node) => node.classList.add('is-visible'));
         return;
@@ -115,6 +128,9 @@ function initCopyButtons() {
 
             try {
                 await navigator.clipboard.writeText(value);
+                button.classList.add('is-copied');
+                window.setTimeout(() => button.classList.remove('is-copied'), 320);
+
                 const label = button.querySelector('[data-copy-label]');
 
                 if (label) {

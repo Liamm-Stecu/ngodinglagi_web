@@ -9,26 +9,26 @@
         </div>
 
         <div class="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-            <div class="animate-rise-in max-w-2xl space-y-4">
-                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+            <div class="max-w-2xl space-y-4">
+                <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Layanan
                 </p>
-                <h1 class="font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                <h1 class="animate-rise-in font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
                     Apa yang bisa<br class="hidden sm:block">
                     dikerjakan
                 </h1>
-                <p class="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <p class="animate-rise-in text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Tiga bidang utama: website, server game SA-MP/Open.MP, dan infrastruktur VPS. Lingkup kerja disepakati di awal.
                 </p>
             </div>
 
-            <ol class="animate-rise-in mt-10 grid gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-4" style="animation-delay: 120ms" aria-label="Alur kerja">
+            <ol class="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-4" aria-label="Alur kerja">
                 @foreach ([
                     ['step' => '01', 'title' => 'Diskusi', 'desc' => 'Ceritakan kebutuhan, kita tentukan lingkupnya.'],
                     ['step' => '02', 'title' => 'Dikerjakan', 'desc' => 'Progres dikabari tanpa perlu ditanya terus.'],
                     ['step' => '03', 'title' => 'Diserahkan', 'desc' => 'Hasil siap dipakai, dibantu kalau ada kendala.'],
-                ] as $flow)
-                    <li class="flex items-start gap-3 rounded-2xl border border-border/70 bg-card/70 px-4 py-4 backdrop-blur-sm sm:px-5">
+                ] as $flowIndex => $flow)
+                    <li class="animate-rise-in flex items-start gap-3 rounded-2xl border border-border/70 bg-card/70 px-4 py-4 backdrop-blur-sm sm:px-5" style="animation-delay: {{ 200 + $flowIndex * 80 }}ms">
                         <span class="font-heading text-sm font-semibold text-primary" aria-hidden="true">{{ $flow['step'] }}</span>
                         <div>
                             <p class="font-heading text-sm font-semibold text-foreground">{{ $flow['title'] }}</p>
@@ -44,7 +44,7 @@
         @foreach ($services as $index => $service)
             <article
                 class="card-bento card-bento-hover card-accent-top reveal overflow-hidden"
-                data-reveal
+                data-reveal="scale"
                 style="transition-delay: {{ $index * 60 }}ms"
                 aria-labelledby="layanan-{{ $service['slug'] }}"
             >

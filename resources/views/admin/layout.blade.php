@@ -38,7 +38,7 @@
 <body class="admin-shell font-body antialiased">
     <div class="flex min-h-screen flex-col lg:flex-row">
         <aside class="admin-sidebar flex flex-col gap-1 border-b border-white/5 p-4 lg:w-60 lg:shrink-0 lg:border-b-0 lg:border-r lg:p-5">
-            <a href="{{ route('home') }}" class="mb-4 flex items-center gap-2.5 px-1 py-1">
+            <a href="{{ route('home') }}" class="animate-fade-up mb-4 flex items-center gap-2.5 px-1 py-1">
                 <span class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-teal-500 text-white shadow-[0_6px_16px_rgba(13,148,136,.35)]" aria-hidden="true">
                     <svg class="size-[58%]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M11 6 5 12l6 6" />
@@ -61,8 +61,12 @@
                         ['route' => 'admin.partner.edit', 'label' => 'Mitra', 'icon' => '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>'],
                     ];
                 @endphp
-                @foreach ($nav as $item)
-                    <a href="{{ route($item['route']) }}" @class(['active' => request()->routeIs($item['route'])])>
+                @foreach ($nav as $i => $item)
+                    <a
+                        href="{{ route($item['route']) }}"
+                        style="animation-delay: {{ 60 + $i * 40 }}ms"
+                        @class(['animate-fade-up', 'active' => request()->routeIs($item['route'])])
+                    >
                         <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $item['icon'] !!}</svg>
                         {{ $item['label'] }}
                     </a>

@@ -9,22 +9,22 @@
         </div>
 
         <div class="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-            <div class="animate-rise-in max-w-2xl space-y-4">
-                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+            <div class="max-w-2xl space-y-4">
+                <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Portofolio
                 </p>
-                <h1 class="font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                <h1 class="animate-rise-in font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
                     Pengalaman kerja
                 </h1>
-                <p class="text-base leading-relaxed text-muted-foreground sm:text-lg">
+                <p class="animate-rise-in text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Fokus di tiga bidang — server game, website, dan infrastruktur. Total
                     <span class="font-semibold text-foreground">{{ $stats['samp'] }}</span> proyek SA-MP dan
                     <span class="font-semibold text-foreground">{{ $stats['web'] }}</span> proyek website selesai.
                 </p>
             </div>
 
-            <div class="animate-rise-in mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4" style="animation-delay: 100ms">
-                <div class="card-bento flex items-end justify-between gap-4 p-5 sm:p-6" aria-label="Total proyek SA-MP">
+            <div class="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4">
+                <div class="card-bento animate-rise-in flex items-end justify-between gap-4 p-5 sm:p-6" style="animation-delay: 200ms" aria-label="Total proyek SA-MP">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">SA-MP / Open.MP</p>
                         <p class="mt-1 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl" data-count-to="{{ $stats['samp'] }}">
@@ -43,7 +43,7 @@
                     </span>
                 </div>
 
-                <div class="card-bento flex items-end justify-between gap-4 p-5 sm:p-6" aria-label="Total proyek website">
+                <div class="card-bento animate-rise-in flex items-end justify-between gap-4 p-5 sm:p-6" style="animation-delay: 280ms" aria-label="Total proyek website">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Website</p>
                         <p class="mt-1 font-heading text-4xl font-semibold tracking-tight text-foreground sm:text-5xl" data-count-to="{{ $stats['web'] }}">

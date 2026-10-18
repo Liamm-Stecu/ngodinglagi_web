@@ -32,6 +32,7 @@
     --animate-brand-in: brand-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
     --animate-rise-in: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
     --animate-fade-up: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    --animate-copy-pulse: copy-pulse 0.3s ease-out;
 }
 
 @keyframes brand-in {
@@ -100,6 +101,21 @@
 
     to {
         transform: translateX(3px);
+    }
+}
+
+@keyframes copy-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(0.98);
+    }
+
+    70% {
+        transform: scale(1.01);
     }
 }
 
@@ -185,10 +201,26 @@
         opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 
+    &[data-reveal='left'] {
+        transform: translateX(-16px);
+    }
+
+    &[data-reveal='right'] {
+        transform: translateX(16px);
+    }
+
+    &[data-reveal='scale'] {
+        transform: translateY(10px) scale(0.985);
+    }
+
     &.is-visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
     }
+}
+
+@utility is-copied {
+    animation: var(--animate-copy-pulse);
 }
 
 @utility header-bar {

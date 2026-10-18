@@ -32,7 +32,7 @@
 
             <form method="POST" action="{{ route('admin.login') }}" class="space-y-5">
                 @csrf
-                <div>
+                <div class="animate-fade-up" style="animation-delay: 120ms">
                     <label for="password" class="admin-label">Password</label>
                     <input
                         id="password"
@@ -45,13 +45,13 @@
                         placeholder="••••••••"
                     >
                 </div>
-                <button type="submit" class="admin-btn w-full">
+                <button type="submit" class="admin-btn animate-fade-up w-full" style="animation-delay: 180ms">
                     Masuk panel
                     <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
             </form>
 
-            <p class="mt-6 text-center text-xs text-slate-400">
+            <p class="animate-fade-up mt-6 text-center text-xs text-slate-400" style="animation-delay: 240ms">
                 <a href="{{ route('home') }}" class="transition hover:text-teal-700">← Kembali ke website</a>
             </p>
         </div>

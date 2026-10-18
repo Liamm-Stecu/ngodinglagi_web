@@ -14,10 +14,10 @@
     </div>
 
     @if (session('status'))
-        <div class="admin-flash mb-4">{{ session('status') }}</div>
+        <div class="admin-flash animate-fade-up mb-4">{{ session('status') }}</div>
     @endif
 
-    <form method="POST" action="{{ route('admin.partner.update') }}" class="admin-card space-y-4">
+    <form method="POST" action="{{ route('admin.partner.update') }}" class="admin-card animate-rise-in space-y-4" style="animation-delay: 80ms">
         @csrf
 
         <div>

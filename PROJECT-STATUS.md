@@ -64,7 +64,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Header sticky glassmorphism + nav (Beranda, Layanan, Portofolio, Kontak)
 - Bento grid: hero full-bleed + cluster stat, tentang+layanan split, strip promosi WHM, CTA kontak split
 - Statistik 23/8 (count-up)
-- Animasi: rise-in, scroll reveal, header shadow saat scroll, hover lift, arrow nudge, count-up
+- Animasi: hero stagger (badge→judul→CTA→tag), kartu stat stagger, reveal up/left/right/scale, scroll reveal + `data-stagger`, header shadow saat scroll, hover lift, arrow nudge, count-up, copy-pulse saat salin Discord
 - `prefers-reduced-motion` + fallback `<noscript>`
 
 ### `/portofolio`
@@ -73,13 +73,13 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - CTA kontak
 
 ### `/layanan`
-- Header hero + strip alur kerja 3 langkah (Diskusi → Dikerjakan → Diserahkan)
-- 3 kartu detail layanan dengan icon chip, deskripsi, cakupan kerja, cocok untuk
+- Header hero + strip alur kerja 3 langkah (Diskusi → Dikerjakan → Diserahkan) — tiap langkah rise-in stagger
+- 3 kartu detail layanan dengan icon chip, deskripsi, cakupan kerja, cocok untuk — reveal scale
 - **Harga placeholder** per tier ("Mulai dari") — edit via admin
 - CTA
 
 ### `/kontak`
-- Kartu WhatsApp utama, Instagram, Discord (salin), tips, link portofolio
+- Kartu WhatsApp utama, Instagram, Discord (salin + copy-pulse), tips, link portofolio — cascade reveal per kartu
 
 ### `/admin` (panel — **tanpa nav publik**)
 - Akses: ketik `/admin` di URL (tidak muncul di menu website)
@@ -87,14 +87,14 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Middleware `admin` + layout **sidebar gelap** + view login standalone (hero gradien teal)
 - Dashboard: KPI count-up (proyek, layanan, tier harga, kategori), **donut chart** komposisi SA-MP vs website (SVG), **bar chart** harga tier (tanpa library), pintasan edit
 - Halaman: Kontak, Layanan+harga, Portofolio, Mitra affiliate
-- Animasi: `fade-up` / `rise-in`, hover lift KPI, bar-grow, donut draw, hormati `prefers-reduced-motion`
+- Animasi: `fade-up` / `rise-in` (stagger KPI, fieldset form, nav sidebar), hover lift KPI, bar-grow, donut draw, hormati `prefers-reduced-motion`
 - Semua simpan menulis ulang `config/*.php` via `ConfigWriter`
 
 ## Pemeriksaan terakhir
 
 | Cek | Hasil | Kapan |
 |-----|--------|--------|
-| `php artisan test --compact` | ✅ **10/10 passed** (40 assertions) | 2026-10-18 |
+| `php artisan test --compact` | ✅ **17/17 passed** (78 assertions) | 2026-10-18 |
 | `vendor/bin/pint` | ✅ passed | 2026-10-18 |
 | `npm run build` | ✅ sukses | 2026-10-18 |
 | Browser headless `/` `/layanan` | ✅ tanpa overflow 375/1440 | 2026-10-18 |

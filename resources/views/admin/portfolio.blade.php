@@ -14,7 +14,7 @@
     </div>
 
     @if (session('status'))
-        <div class="admin-flash mb-4">{{ session('status') }}</div>
+        <div class="admin-flash animate-fade-up mb-4">{{ session('status') }}</div>
     @endif
 
     @if ($errors->any())
@@ -26,7 +26,7 @@
     <form method="POST" action="{{ route('admin.portfolio.update') }}" class="space-y-4">
         @csrf
 
-        <div class="admin-card grid gap-3 sm:grid-cols-2">
+        <div class="admin-card animate-rise-in grid gap-3 sm:grid-cols-2">
             <div>
                 <label class="admin-label">Proyek SA-MP</label>
                 <input class="admin-input" type="number" min="0" name="stats[samp]" value="{{ old('stats.samp', data_get($portfolio, 'stats.samp')) }}" required>
@@ -38,7 +38,7 @@
         </div>
 
         @foreach (data_get($portfolio, 'categories', []) as $i => $category)
-            <fieldset class="admin-card space-y-3">
+            <fieldset class="admin-card animate-rise-in space-y-3" style="animation-delay: {{ 100 + $i * 80 }}ms">
                 <legend class="px-2 font-heading text-sm font-semibold text-teal-700">
                     {{ data_get($category, 'title') }}
                 </legend>
