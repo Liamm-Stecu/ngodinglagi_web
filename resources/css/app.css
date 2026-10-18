@@ -1,0 +1,234 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+
+    --color-primary: #0f766e;
+    --color-on-primary: #ffffff;
+    --color-secondary: #14b8a6;
+    --color-on-secondary: #0f172a;
+    --color-accent: #0d9488;
+    --color-on-accent: #ffffff;
+    --color-background: #f8fafc;
+    --color-foreground: #0f172a;
+    --color-card: #ffffff;
+    --color-card-foreground: #0f172a;
+    --color-muted: #f1f5f9;
+    --color-muted-foreground: #475569;
+    --color-border: #e2e8f0;
+    --color-destructive: #dc2626;
+    --color-on-destructive: #ffffff;
+    --color-ring: #0f766e;
+
+    --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
+    --shadow-card-hover: 0 4px 8px rgba(15, 23, 42, 0.05), 0 14px 28px rgba(15, 23, 42, 0.07);
+    --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.04);
+
+    --animate-brand-in: brand-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    --animate-rise-in: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    --animate-fade-up: fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes brand-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes soft-pulse {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes bar-grow {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes arrow-nudge {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(3px);
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 5.5rem;
+    }
+
+    body {
+        @apply bg-background text-foreground font-sans text-base leading-relaxed antialiased;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-ring);
+        outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+
+        [data-reveal] {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+}
+
+@utility card-bento {
+    @apply relative rounded-2xl border border-border bg-card p-6 shadow-card transition-[box-shadow,transform,border-color] duration-300 ease-out;
+}
+
+@utility card-bento-hover {
+    &:hover {
+        @apply -translate-y-0.5 border-primary/15 shadow-card-hover;
+    }
+}
+
+@utility card-accent-top {
+    &::before {
+        content: '';
+        position: absolute;
+        inset-inline: 1.5rem;
+        top: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+        opacity: 0.7;
+    }
+}
+
+@utility btn-primary {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-on-accent shadow-[0_1px_2px_rgba(13,148,136,0.25)] transition-all duration-200 ease-out hover:bg-primary hover:shadow-[0_6px_16px_rgba(13,148,136,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+
+    svg {
+        @apply transition-transform duration-200 ease-out;
+    }
+
+    &:hover svg,
+    &:focus-visible svg {
+        animation: arrow-nudge 0.25s ease-out forwards;
+    }
+}
+
+@utility btn-secondary {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card/70 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 ease-out hover:border-primary/35 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+}
+
+@utility reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@utility header-bar {
+    transition:
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+
+    &.is-scrolled {
+        @apply border-border/90 bg-background/95 shadow-header;
+    }
+}
+
+@utility decorative-blob {
+    pointer-events: none;
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(0px);
+    animation: soft-pulse 8s ease-in-out infinite;
+}
+
+@utility nav-link {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.45rem;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--color-primary);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+        transform: scaleX(1);
+    }
+}

@@ -1,0 +1,61 @@
+# Environment — jangan pernah commit secret
+.env
+.env.*
+!.env.example
+/auth.json
+
+# Dependencies
+/node_modules
+/vendor
+/npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Laravel build & runtime
+/public/build
+/public/hot
+/public/storage
+/public/fonts-manifest.dev.json
+/storage/*.key
+/storage/pail
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/framework/testing/*
+/storage/logs/*
+!/storage/**/.gitkeep
+.phpunit.result.cache
+/.phpunit.cache
+.phpactor.json
+_ide_helper.php
+Homestead.json
+Homestead.yaml
+
+# Editor / IDE / agent
+/.idea
+/.vscode
+/.vs
+/.cursor
+/.zed
+/.nova
+/.codex
+/.fleet
+/.opencode
+*.swp
+*.swo
+.php-cs-fixer.cache
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test / coverage
+/coverage
+/.phpunit.result.cache
+
+# Playwright (kalau pernah install --no-save)
+/test-results
+/playwright-report
+/blob-report
+/playwright/.cache

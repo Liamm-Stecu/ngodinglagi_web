@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "laravel-owasp-security": {
+      "source": "AsyrafHussin/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/laravel-owasp-security/SKILL.md",
+      "computedHash": "c8e335415263f9f7bb224f15f82dda0a6cdfc136538e3fbf6b0eb1928fa110b5"
+    },
+    "laravel-testing": {
+      "source": "AsyrafHussin/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/laravel-testing/SKILL.md",
+      "computedHash": "1e827d6ea94dff65484bd2e8ed0f67547941ae288b47c2fe8e075179aca520b6"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "computedHash": "7ac62d931e52dbc7c309ed8ee067101969db2454709339b02daa583e80e98d5f"
+    },
+    "web-design-guidelines": {
+      "source": "AsyrafHussin/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "3d34b066b23d6072a22f136520b93fe89937e6cd4aa85937786159c705f2ecbe"
+    }
+  }
+}
