@@ -27,7 +27,7 @@
                 ['label' => 'Proyek total', 'value' => $totalProjects, 'hint' => 'SA-MP + website', 'route' => 'admin.portfolio.edit'],
                 ['label' => 'Layanan', 'value' => $serviceCount, 'hint' => 'item aktif', 'route' => 'admin.services.edit'],
                 ['label' => 'Tier harga', 'value' => $tierCount, 'hint' => 'paket pricing', 'route' => 'admin.services.edit'],
-                ['label' => 'Kategori', 'value' => $categoryCount, 'hint' => 'portofolio', 'route' => 'admin.portfolio.edit'],
+                ['label' => 'Kategori', 'value' => $categoryCount, 'hint' => 'bidang tentang', 'route' => 'admin.portfolio.edit'],
             ];
         @endphp
         @foreach ($kpis as $i => $kpi)
@@ -105,7 +105,7 @@
             </div>
 
             <a href="{{ route('admin.portfolio.edit') }}" class="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-teal-700 hover:text-teal-800">
-                Edit portofolio
+                Edit tentang
                 <svg class="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </article>
@@ -151,7 +151,7 @@
             $links = [
                 ['route' => 'admin.contact.edit', 'title' => 'Kontak', 'desc' => data_get($contact, 'whatsapp.display', '—'), 'icon' => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>'],
                 ['route' => 'admin.services.edit', 'title' => 'Layanan', 'desc' => $serviceCount . ' layanan + harga', 'icon' => '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>'],
-                ['route' => 'admin.portfolio.edit', 'title' => 'Portofolio', 'desc' => $samp . ' SA-MP · ' . $web . ' web', 'icon' => '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>'],
+                ['route' => 'admin.portfolio.edit', 'title' => 'Tentang', 'desc' => $samp . ' SA-MP · ' . $web . ' web', 'icon' => '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>'],
                 ['route' => 'admin.partner.edit', 'title' => 'Mitra', 'desc' => data_get($affiliate, 'partner', '—'), 'icon' => '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>'],
             ];
         @endphp

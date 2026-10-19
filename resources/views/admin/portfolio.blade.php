@@ -1,14 +1,14 @@
 @extends('admin.layout')
 
-@section('title', 'Portofolio')
+@section('title', 'Tentang')
 
 @section('content')
 <div class="mx-auto w-full max-w-3xl">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div class="animate-fade-up">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Panel</p>
-            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900">Portofolio</h1>
-            <p class="mt-1 text-sm text-slate-500">Edit statistik dan kategori proyek.</p>
+            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900">Tentang</h1>
+            <p class="mt-1 text-sm text-slate-500">Edit statistik &amp; bidang di halaman Tentang.</p>
         </div>
         <a href="{{ route('admin.dashboard') }}" class="admin-btn admin-btn-ghost">← Dashboard</a>
     </div>
@@ -65,7 +65,7 @@
 
         <div class="flex flex-wrap gap-3">
             <button type="submit" class="admin-btn">Simpan</button>
-            <a href="{{ route('portofolio') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat halaman</a>
+            <a href="{{ route('about') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat halaman</a>
         </div>
     </form>
 

@@ -8,12 +8,12 @@
             <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/8" style="animation-delay: 1.8s"></div>
         </div>
 
-        <div class="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div class="relative mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
             <div class="max-w-2xl space-y-4">
                 <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Layanan
                 </p>
-                <h1 class="animate-rise-in font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
+                <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
                     Apa yang bisa<br class="hidden sm:block">
                     dikerjakan
                 </h1>
@@ -40,7 +40,7 @@
         </div>
     </section>
 
-    <section class="mx-auto w-full max-w-6xl space-y-4 px-4 py-12 sm:space-y-5 sm:px-6 sm:py-16 lg:px-8">
+    <section class="mx-auto w-full max-w-6xl space-y-4 px-4 py-8 sm:space-y-5 sm:px-6 sm:py-14 lg:px-8">
         @foreach ($services as $index => $service)
             <article
                 class="card-bento card-bento-hover card-accent-top reveal overflow-hidden"
@@ -184,7 +184,7 @@
                 <div class="flex shrink-0 flex-col gap-3 sm:flex-row">
                     <a
                         href="{{ route('kontak') }}"
-                        class="group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-on-primary px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 hover:bg-white hover:shadow-[0_8px_20px_rgba(15,23,42,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        class="group inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-on-primary px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-200 hover:bg-white hover:shadow-[0_8px_20px_rgba(15,23,42,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-11 sm:px-6 sm:py-3"
                     >
                         Hubungi saya
                         <svg aria-hidden="true" class="size-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -193,10 +193,10 @@
                         </svg>
                     </a>
                     <a
-                        href="{{ route('portofolio') }}"
-                        class="inline-flex min-h-11 items-center justify-center rounded-lg border border-on-primary/30 px-6 py-3 text-sm font-semibold text-on-primary transition-all duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        href="{{ route('about') }}"
+                        class="inline-flex min-h-10 items-center justify-center rounded-lg border border-on-primary/30 px-5 py-2.5 text-sm font-semibold text-on-primary transition-all duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-11 sm:px-6 sm:py-3"
                     >
-                        Lihat portofolio
+                        Tentang kami
                     </a>
                 </div>
             </div>

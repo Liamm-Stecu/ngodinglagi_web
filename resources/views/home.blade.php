@@ -2,14 +2,16 @@
     {{-- Hero --}}
     <section id="beranda" class="relative overflow-hidden border-b border-border/60">
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <div class="decorative-blob -right-20 -top-28 size-72 bg-secondary/12 sm:size-96"></div>
-            <div class="decorative-blob -bottom-32 -left-24 size-64 bg-primary/8" style="animation-delay: 2s"></div>
-            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_70%_-10%,#14b8a629,transparent_70%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_0%_100%,#0f766e1a,transparent_65%)]"></div>
+            <div class="decorative-blob -right-20 -top-28 size-64 bg-secondary/10 sm:size-96"></div>
+            <div class="decorative-blob -bottom-32 -left-24 size-48 bg-primary/8 sm:size-64" style="animation-delay: 2s"></div>
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/25 to-transparent"></div>
         </div>
 
-        <div class="relative mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
-            <div class="space-y-6 lg:col-span-7">
-                <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+        <div class="relative mx-auto grid w-full max-w-6xl gap-8 px-4 py-10 sm:gap-10 sm:px-6 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-14 lg:px-8 lg:py-24">
+            <div class="space-y-5 sm:space-y-6 lg:col-span-7">
+                <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/8 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary sm:px-3 sm:text-xs">
                     <span class="relative flex size-1.5" aria-hidden="true">
                         <span class="absolute inline-flex size-full animate-ping rounded-full bg-secondary opacity-75"></span>
                         <span class="relative inline-flex size-1.5 rounded-full bg-secondary"></span>
@@ -17,16 +19,16 @@
                     NgodingLagi?
                 </p>
 
-                <h1 id="hero-heading" class="animate-rise-in font-heading text-4xl font-semibold leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl" style="animation-delay: 70ms">
+                <h1 id="hero-heading" class="animate-rise-in font-heading text-[2.05rem] font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-[2.75rem] sm:leading-[1.06] lg:text-[3.75rem]" style="animation-delay: 70ms">
                     Bantuan teknis<br class="hidden sm:block">
-                    yang <span class="text-primary">rapi &amp; jelas</span>
+                    yang <span class="relative text-primary">rapi &amp; jelas<span class="absolute -bottom-1 left-0 h-1 w-full rounded-full bg-primary/15" aria-hidden="true"></span></span>
                 </h1>
 
-                <p class="animate-rise-in max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
+                <p class="animate-rise-in max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Website, server game SA-MP/Open.MP, dan infrastruktur VPS — dikerjakan tanpa drama, komunikasi jelas dari awal.
                 </p>
 
-                <div class="animate-rise-in flex flex-col gap-3 sm:flex-row sm:items-center" style="animation-delay: 210ms">
+                <div class="animate-rise-in flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3" style="animation-delay: 210ms">
                     <a href="{{ route('layanan') }}" class="btn-primary">
                         Lihat layanan
                         <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -39,17 +41,17 @@
                     </a>
                 </div>
 
-                <ul class="animate-rise-in flex flex-wrap gap-2 pt-2" style="animation-delay: 280ms" aria-label="Bidang layanan">
+                <ul class="animate-rise-in flex flex-wrap gap-1.5 pt-1 sm:gap-2" style="animation-delay: 280ms" aria-label="Bidang layanan">
                     @foreach (['Web', 'SA-MP / Open.MP', 'VPS & Server'] as $tag)
-                        <li class="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+                        <li class="rounded-full border border-border bg-card px-2.5 py-1 text-[11px] font-medium text-muted-foreground sm:px-3 sm:text-xs">
                             {{ $tag }}
                         </li>
                     @endforeach
                 </ul>
             </div>
 
-            <div class="grid gap-3 sm:grid-cols-2 lg:col-span-5">
-                <article class="card-bento card-bento-hover animate-rise-in flex min-h-36 flex-col justify-between gap-4 sm:col-span-2 sm:min-h-44" style="animation-delay: 160ms">
+            <div class="grid gap-2.5 sm:grid-cols-2 sm:gap-3 lg:col-span-5">
+                <article class="card-bento card-accent-top card-bento-hover animate-rise-in flex min-h-0 flex-col justify-between gap-3 sm:col-span-2 sm:min-h-40" style="animation-delay: 160ms">
                     <div class="flex items-center gap-3">
                         <span class="flex size-9 items-center justify-center rounded-lg bg-primary text-on-primary" aria-hidden="true">
                             <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -58,7 +60,7 @@
                             </svg>
                         </span>
                         <div>
-                            <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Fokus</p>
+                            <p class="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground sm:text-xs">Fokus</p>
                             <p class="font-heading text-sm font-semibold text-foreground">Individu · Komunitas · Bisnis</p>
                         </div>
                     </div>
@@ -67,8 +69,8 @@
                     </p>
                 </article>
 
-                <article class="card-bento card-bento-hover animate-rise-in flex flex-col justify-between gap-3 p-5" style="animation-delay: 240ms" aria-labelledby="stat-samp">
-                    <div class="flex size-9 items-center justify-center rounded-lg bg-muted text-primary" aria-hidden="true">
+                <article class="card-bento card-bento-hover animate-rise-in flex flex-col justify-between gap-2.5 p-4 sm:p-5" style="animation-delay: 240ms" aria-labelledby="stat-samp">
+                    <div class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary sm:size-9" aria-hidden="true">
                         <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="6" x2="6" y1="11" y2="16" />
                             <line x1="10" x2="10" y1="6" y2="16" />
@@ -78,7 +80,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p id="stat-samp" class="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl" data-count-to="23">
+                        <p id="stat-samp" class="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-4xl" data-count-to="23">
                             23
                         </p>
                         <p class="mt-0.5 text-xs leading-snug text-muted-foreground sm:text-sm">
@@ -87,8 +89,8 @@
                     </div>
                 </article>
 
-                <article class="card-bento card-bento-hover animate-rise-in flex flex-col justify-between gap-3 p-5" style="animation-delay: 320ms" aria-labelledby="stat-web">
-                    <div class="flex size-9 items-center justify-center rounded-lg bg-muted text-primary" aria-hidden="true">
+                <article class="card-bento card-bento-hover animate-rise-in flex flex-col justify-between gap-2.5 p-4 sm:p-5" style="animation-delay: 320ms" aria-labelledby="stat-web">
+                    <div class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary sm:size-9" aria-hidden="true">
                         <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                             <rect width="18" height="18" x="3" y="3" rx="2" />
                             <path d="M3 9h18" />
@@ -96,7 +98,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p id="stat-web" class="font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl" data-count-to="8">
+                        <p id="stat-web" class="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-4xl" data-count-to="8">
                             8
                         </p>
                         <p class="mt-0.5 text-xs leading-snug text-muted-foreground sm:text-sm">
@@ -109,7 +111,7 @@
     </section>
 
     {{-- Tentang + Layanan --}}
-    <section class="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <section class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8">
         <div class="grid gap-4 sm:gap-5 lg:grid-cols-12">
             <article
                 id="tentang"
@@ -149,7 +151,7 @@
             <div id="layanan" class="grid content-start gap-4 sm:gap-5 lg:col-span-7">
                 <header class="reveal" data-reveal="right">
                     <p class="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Layanan</p>
-                    <h2 class="mt-2 font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                        <h2 class="mt-2 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
                         Apa yang bisa dikerjakan
                     </h2>
                 </header>
@@ -328,7 +330,7 @@
     </section>
 
     {{-- Kontak --}}
-    <section id="kontak" class="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <section id="kontak" class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8">
         <article
             class="card-bento reveal relative overflow-hidden border-primary/20 bg-primary text-on-primary"
             data-reveal
@@ -339,7 +341,7 @@
 
             <div class="relative grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
                 <div class="space-y-3">
-                    <h2 id="kontak-heading" class="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+                    <h2 id="kontak-heading" class="font-heading text-xl font-semibold tracking-tight sm:text-3xl">
                         Diskusikan proyek Anda
                     </h2>
                     <p class="max-w-xl text-sm leading-relaxed text-on-primary/90 sm:text-base">
@@ -349,7 +351,7 @@
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">
                         <a
                             href="{{ route('kontak') }}"
-                            class="group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-on-primary px-6 py-3 text-sm font-semibold text-primary transition-all duration-200 hover:bg-white hover:shadow-[0_8px_20px_rgba(15,23,42,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            class="group inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-on-primary px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-200 hover:bg-white hover:shadow-[0_8px_20px_rgba(15,23,42,0.18)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-11 sm:px-6 sm:py-3"
                         >
                             Halaman kontak
                             <svg aria-hidden="true" class="size-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -358,10 +360,10 @@
                             </svg>
                         </a>
                         <a
-                            href="{{ route('portofolio') }}"
-                            class="inline-flex min-h-11 items-center justify-center rounded-lg border border-on-primary/30 px-6 py-3 text-sm font-semibold text-on-primary transition-all duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                            href="{{ route('about') }}"
+                            class="inline-flex min-h-10 items-center justify-center rounded-lg border border-on-primary/30 px-5 py-2.5 text-sm font-semibold text-on-primary transition-all duration-200 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:min-h-11 sm:px-6 sm:py-3"
                         >
-                            Lihat portofolio
+                            Tentang kami
                         </a>
                     </div>
                 </div>

@@ -14,12 +14,16 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/portofolio', function () {
-    return view('portofolio', [
+Route::get('/about', function () {
+    return view('about', [
         'stats' => config('portfolio.stats'),
         'categories' => config('portfolio.categories'),
     ]);
-})->name('portofolio');
+})->name('about');
+
+Route::get('/portofolio', function () {
+    return redirect()->route('about', status: 301);
+})->name('portofolio.redirect');
 
 Route::get('/layanan', function () {
     return view('layanan', [
@@ -35,7 +39,7 @@ Route::get('/sitemap.xml', function () {
     $urls = collect([
         ['loc' => route('home'), 'priority' => '1.0', 'changefreq' => 'weekly'],
         ['loc' => route('layanan'), 'priority' => '0.9', 'changefreq' => 'monthly'],
-        ['loc' => route('portofolio'), 'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['loc' => route('about'), 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['loc' => route('kontak'), 'priority' => '0.7', 'changefreq' => 'yearly'],
     ]);
 

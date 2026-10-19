@@ -25,13 +25,19 @@ class HomePageTest extends TestCase
             ->assertSee(config('contact.discord.display'), false);
     }
 
-    public function test_portofolio_page_loads_with_stats(): void
+    public function test_about_page_loads_with_stats(): void
     {
-        $this->get(route('portofolio'))
+        $this->get(route('about'))
             ->assertOk()
-            ->assertSee('Portofolio')
+            ->assertSee('Kenali ngodinglagi')
             ->assertSee((string) config('portfolio.stats.samp'))
             ->assertSee((string) config('portfolio.stats.web'));
+    }
+
+    public function test_old_portofolio_redirects_to_about(): void
+    {
+        $this->get('/portofolio')
+            ->assertRedirect(route('about'));
     }
 
     public function test_kontak_page_loads_with_channels(): void

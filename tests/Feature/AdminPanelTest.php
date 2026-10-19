@@ -63,7 +63,7 @@ class AdminPanelTest extends TestCase
             ->assertSee('Dashboard')
             ->assertSee('Kontak')
             ->assertSee('Layanan')
-            ->assertSee('Portofolio')
+            ->assertSee('Tentang')
             ->assertSee('Mitra');
     }
 

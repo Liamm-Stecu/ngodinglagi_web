@@ -148,7 +148,7 @@
     }
 
     body {
-        @apply bg-background text-foreground font-sans text-base leading-relaxed antialiased;
+        @apply bg-background text-foreground font-sans text-[15px] leading-relaxed antialiased sm:text-base;
     }
 
     :focus-visible {
@@ -177,7 +177,7 @@
 }
 
 @utility card-bento {
-    @apply relative rounded-2xl border border-border bg-card p-6 shadow-card transition-[box-shadow,transform,border-color] duration-300 ease-out;
+    @apply relative rounded-xl border border-border bg-card p-5 shadow-card transition-[box-shadow,transform,border-color] duration-300 ease-out sm:rounded-2xl sm:p-6;
 }
 
 @utility card-bento-hover {
@@ -200,7 +200,7 @@
 }
 
 @utility btn-primary {
-    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-on-accent shadow-[0_1px_2px_rgba(13,148,136,0.25)] transition-all duration-200 ease-out hover:bg-primary hover:shadow-[0_6px_16px_rgba(13,148,136,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+    @apply inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent shadow-[0_1px_2px_rgba(13,148,136,0.25)] transition-all duration-200 ease-out hover:bg-primary hover:shadow-[0_6px_16px_rgba(13,148,136,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:min-h-11 sm:px-6 sm:py-3;
 
     svg {
         @apply transition-transform duration-200 ease-out;
@@ -213,7 +213,7 @@
 }
 
 @utility btn-secondary {
-    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card/70 px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 ease-out hover:border-primary/35 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+    @apply inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card/70 px-5 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 ease-out hover:border-primary/35 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:min-h-11 sm:px-6 sm:py-3;
 }
 
 @utility reveal {

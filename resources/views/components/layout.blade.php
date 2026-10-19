@@ -79,18 +79,18 @@
         </a>
 
         <header data-header class="header-bar sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
-            <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6 lg:px-8">
+            <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-4 lg:px-8">
                 <a
                     href="{{ route('home') }}"
                     class="group flex items-center gap-2.5 text-foreground transition-colors duration-200 hover:text-primary"
                 >
-                    <span class="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-on-primary shadow-sm" aria-hidden="true">
+                    <span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-on-primary shadow-sm sm:size-9 sm:rounded-xl" aria-hidden="true">
                         <svg class="size-[58%]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M11 6 5 12l6 6" />
                             <path d="m14 5 5 14" />
                         </svg>
                     </span>
-                    <span class="font-heading text-lg font-semibold tracking-tight">
+                    <span class="font-heading text-base font-semibold tracking-tight sm:text-lg">
                         <span class="relative">
                             ngodinglagi
                             <span
@@ -108,7 +108,7 @@
                             <a
                                 href="{{ route('home') }}"
                                 @class([
-                                    'group nav-link inline-flex min-h-11 items-center rounded-lg px-2.5 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:px-3',
+                                    'group nav-link inline-flex min-h-10 items-center rounded-lg px-2 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:min-h-11 sm:px-3',
                                     'bg-muted text-foreground' => request()->routeIs('home'),
                                     'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('home'),
                                 ])
@@ -120,7 +120,7 @@
                             <a
                                 href="{{ route('layanan') }}"
                                 @class([
-                                    'group nav-link inline-flex min-h-11 items-center rounded-lg px-2.5 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:px-3',
+                                    'group nav-link inline-flex min-h-10 items-center rounded-lg px-2 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:min-h-11 sm:px-3',
                                     'bg-muted text-foreground' => request()->routeIs('layanan'),
                                     'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('layanan'),
                                 ])
@@ -130,21 +130,21 @@
                         </li>
                         <li class="hidden sm:block">
                             <a
-                                href="{{ route('portofolio') }}"
+                                href="{{ route('about') }}"
                                 @class([
-                                    'group nav-link inline-flex min-h-11 items-center rounded-lg px-2.5 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:px-3',
-                                    'bg-muted text-foreground' => request()->routeIs('portofolio'),
-                                    'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('portofolio'),
+                                    'group nav-link inline-flex min-h-10 items-center rounded-lg px-2 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:min-h-11 sm:px-3',
+                                    'bg-muted text-foreground' => request()->routeIs('about'),
+                                    'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('about'),
                                 ])
                             >
-                                Portofolio
+                                Tentang
                             </a>
                         </li>
                         <li>
                             <a
                                 href="{{ route('kontak') }}"
                                 @class([
-                                    'group inline-flex min-h-11 items-center gap-1.5 rounded-lg px-3.5 text-sm font-semibold shadow-[0_1px_2px_rgba(15,118,110,0.3)] transition-all duration-200 sm:px-4',
+                                    'group inline-flex min-h-10 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold shadow-[0_1px_2px_rgba(15,118,110,0.3)] transition-all duration-200 sm:min-h-11 sm:px-4',
                                     'bg-primary text-on-primary hover:bg-primary/90 hover:shadow-[0_6px_16px_rgba(15,118,110,0.28)]' => ! request()->routeIs('kontak'),
                                     'bg-foreground text-background' => request()->routeIs('kontak'),
                                 ])
@@ -162,7 +162,7 @@
                 <button
                     type="button"
                     data-theme-toggle
-                    class="inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                    class="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:size-10"
                     aria-label="Ganti tema terang atau gelap"
                 >
                     <svg class="size-4 dark:hidden" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -213,10 +213,10 @@
                         Layanan
                     </a>
                     <a
-                        href="{{ route('portofolio') }}"
+                        href="{{ route('about') }}"
                         class="inline-flex min-h-10 items-center rounded-lg px-3 transition-colors duration-200 hover:bg-muted hover:text-foreground"
                     >
-                        Portofolio
+                        Tentang
                     </a>
                     <a
                         href="{{ route('kontak') }}"

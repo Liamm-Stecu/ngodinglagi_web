@@ -17,9 +17,9 @@
 ### Struktur penting
 
 ```
-routes/web.php                     → GET / (home), /portofolio, /layanan, /kontak, /admin/*
+routes/web.php                     → GET / (home), /about, /layanan, /kontak, /admin/*, /sitemap.xml, /robots.txt
 resources/views/home.blade.php     → homepage Bento Grid
-resources/views/portofolio.blade.php → halaman portofolio
+resources/views/about.blade.php    → halaman Tentang (pengganti portofolio)
 resources/views/layanan.blade.php  → halaman layanan + harga
 resources/views/kontak.blade.php   → halaman kontak
 resources/views/admin/*.blade.php  → panel admin (login, dashboard, edit)
@@ -67,9 +67,10 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Animasi: hero stagger (badge→judul→CTA→tag), kartu stat stagger, reveal up/left/right/scale, scroll reveal + `data-stagger`, header shadow saat scroll, hover lift, arrow nudge, count-up, copy-pulse saat salin Discord
 - `prefers-reduced-motion` + fallback `<noscript>`
 
-### `/portofolio`
+### `/about` (dulu `/portofolio`, redirect 301)
 - Stats 23 SA-MP / 8 website (count-up)
-- 3 kategori (SA-MP, Website, VPS) dengan daftar kemampuan — **tanpa nama proyek karangan**
+- "Siapa ngodinglagi" + prinsip kerja (4 kartu)
+- 3 bidang (SA-MP, Website, VPS) dengan daftar kemampuan — **tanpa nama proyek karangan**
 - CTA kontak
 
 ### `/layanan`
@@ -103,7 +104,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 
 | Cek | Hasil | Kapan |
 |-----|--------|--------|
-| `php artisan test --compact` | ✅ **24/24 passed** (119 assertions) | 2026-10-18 |
+| `php artisan test --compact` | ✅ passed | 2026-10-18 |
 | `vendor/bin/pint` | ✅ passed | 2026-10-18 |
 | `npm run build` | ✅ sukses | 2026-10-18 |
 | Browser headless `/` `/layanan` | ✅ tanpa overflow 375/1440 | 2026-10-18 |
@@ -111,10 +112,11 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 
 ## Belum selesai / belum diverifikasi
 
-- [ ] Nama proyek nyata untuk daftar portofolio
+- [x] Nama halaman portofolio → **About** (`/about`, redirect dari `/portofolio`)
 - [x] Dark mode — token + toggle header (2026-10-18); admin panel masih light-only
+- [x] Deploy-ready checklist: README, `.env.example`, ConfigWriter bust config cache, sftp ignore — siap upload; **belum deploy sungguhan**
 - [ ] Visual check di browser non-Edge / perangkat fisik — belum
-- [ ] Deployment — belum
+- [ ] Deployment — belum (panduan di README)
 - [x] Admin: tambah/hapus layanan, tier harga, kategori — CRUD via form post (2026-10-18)
 - [ ] Admin: ubah password via UI (baru via `.env`)
 - [x] Admin: proteksi rate limit brute force — 5/menit per IP (2026-10-18)

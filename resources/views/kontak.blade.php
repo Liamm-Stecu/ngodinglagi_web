@@ -8,12 +8,12 @@
             <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/8" style="animation-delay: 1.8s"></div>
         </div>
 
-        <div class="relative mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div class="relative mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
             <div class="max-w-2xl space-y-4">
                 <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     Kontak
                 </p>
-                <h1 class="animate-rise-in font-heading text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
+                <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
                     Ngobrol dulu aja
                 </h1>
                 <p class="animate-rise-in text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
@@ -23,7 +23,7 @@
         </div>
     </section>
 
-    <section class="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+    <section class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8">
         <div class="grid gap-4 sm:gap-5 lg:grid-cols-12">
             {{-- Kanal utama --}}
             <div class="space-y-4 lg:col-span-7">
@@ -148,10 +148,10 @@
                         Mau lihat dulu hasil kerjanya?
                     </h2>
                     <p class="text-sm leading-relaxed text-muted-foreground">
-                        Cek ringkasan pengalaman: total proyek SA-MP dan website yang pernah dikerjakan.
+                        Cek sekilas siapa ngodinglagi: fokus kerja, cara kerja, dan bidang yang ditangani.
                     </p>
-                    <a href="{{ route('portofolio') }}" class="btn-secondary w-full sm:w-auto">
-                        Lihat portofolio
+                    <a href="{{ route('about') }}" class="btn-secondary w-full sm:w-auto">
+                        Kenali ngodinglagi
                         <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M5 12h14" />
                             <path d="m12 5 7 7-7 7" />
