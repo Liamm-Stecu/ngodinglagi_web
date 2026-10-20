@@ -286,3 +286,123 @@
         transform: scaleX(1);
     }
 }
+
+/* Error / maintenance pages — shared motif (subtle) */
+
+/* Maintenance (503): gear putar pelan + progress sweep */
+
+@utility build-gear {
+    transform-origin: 12px 12px;
+    animation: build-gear-spin 6s linear infinite;
+}
+
+@keyframes build-gear-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@utility build-progress {
+    position: relative;
+    overflow: hidden;
+    border-radius: 999px;
+    background: var(--color-muted);
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 40%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+        animation: build-sweep 1.6s ease-in-out infinite;
+    }
+}
+
+@keyframes build-sweep {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(320%);
+    }
+}
+
+@utility float-soft {
+    animation: float-soft 3.5s ease-in-out infinite;
+}
+
+@keyframes float-soft {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Error (404/500/...): ring dashed mutar, ikon disconnect drift, titik retry */
+
+@utility error-ring {
+    animation: error-ring-spin 14s linear infinite;
+    border-style: dashed;
+}
+
+@keyframes error-ring-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@utility error-drift {
+    animation: error-drift 7s ease-in-out infinite;
+}
+
+@keyframes error-drift {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-12px) rotate(8deg);
+        opacity: 1;
+    }
+}
+
+@utility error-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--color-primary);
+    display: inline-block;
+    animation: error-dot-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes error-dot-blink {
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .build-gear,
+    .build-progress::after,
+    .float-soft,
+    .error-ring,
+    .error-drift,
+    .error-dot {
+        animation: none !important;
+    }
+}
