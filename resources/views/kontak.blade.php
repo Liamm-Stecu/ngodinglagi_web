@@ -2,10 +2,12 @@
     :title="'Kontak — ngodinglagi'"
     description="Hubungi ngodinglagi lewat WhatsApp, Instagram, atau Discord."
 >
-    <section class="relative overflow-hidden border-b border-border/60">
+    <section class="relative overflow-hidden border-b border-border/50">
+        <div class="mesh-gradient" aria-hidden="true"></div>
+        <div class="grid-pattern" aria-hidden="true"></div>
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <div class="decorative-blob -right-16 -top-20 size-64 bg-secondary/12 sm:size-80"></div>
-            <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/8" style="animation-delay: 1.8s"></div>
+            <div class="decorative-blob -right-16 -top-20 size-64 bg-secondary/10 sm:size-80"></div>
+            <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/6" style="animation-delay: 1.8s"></div>
         </div>
 
         <div class="relative mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
@@ -16,7 +18,7 @@
                 <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
                     Ngobrol dulu aja
                 </h1>
-                <p class="animate-rise-in text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
+                <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Pilih kanal yang paling nyaman. Ceritakan kebutuhannya — kita bahas lingkup kerja yang jelas sebelum mulai.
                 </p>
             </div>
@@ -121,6 +123,91 @@
 
             {{-- Side card --}}
             <aside class="space-y-4 lg:col-span-5">
+                <div class="card-bento reveal space-y-5 p-6 sm:p-8" data-reveal aria-labelledby="form-heading">
+                    <h2 id="form-heading" class="font-heading text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+                        Kirim pesan
+                    </h2>
+                    <p class="text-sm text-muted-foreground">
+                        Isi form di bawah — atau langsung WhatsApp saja kalau mau lebih cepat.
+                    </p>
+
+                    @if (session('contact_success'))
+                        <div role="status" class="rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm font-medium text-primary">
+                            {{ session('contact_success') }}
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('kontak.store') }}" class="space-y-4" novalidate>
+                        @csrf
+
+                        <div>
+                            <label for="contact-name" class="mb-1.5 block text-sm font-medium text-foreground">
+                                Nama <span class="text-primary" aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                id="contact-name"
+                                name="name"
+                                type="text"
+                                required
+                                maxlength="100"
+                                autocomplete="name"
+                                value="{{ old('name') }}"
+                                class="block w-full min-h-11 rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-2 focus:outline-primary/20 transition-colors duration-150 @error('name') border-destructive @enderror"
+                                placeholder="Nama kamu"
+                            >
+                            @error('name')
+                                <p class="mt-1.5 text-xs text-destructive">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="contact-email" class="mb-1.5 block text-sm font-medium text-foreground">
+                                Email <span class="text-xs font-normal text-muted-foreground">(opsional)</span>
+                            </label>
+                            <input
+                                id="contact-email"
+                                name="email"
+                                type="email"
+                                maxlength="255"
+                                autocomplete="email"
+                                value="{{ old('email') }}"
+                                class="block w-full min-h-11 rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-2 focus:outline-primary/20 transition-colors duration-150 @error('email') border-destructive @enderror"
+                                placeholder="nama@email.com"
+                            >
+                            @error('email')
+                                <p class="mt-1.5 text-xs text-destructive">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="contact-message" class="mb-1.5 block text-sm font-medium text-foreground">
+                                Pesan <span class="text-primary" aria-hidden="true">*</span>
+                            </label>
+                            <textarea
+                                id="contact-message"
+                                name="message"
+                                required
+                                rows="5"
+                                minlength="10"
+                                maxlength="2000"
+                                class="block w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-2 focus:outline-primary/20 transition-colors duration-150 resize-y @error('message') border-destructive @enderror"
+                                placeholder="Ceritakan kebutuhannya: website, SA-MP/Open.MP, atau VPS…"
+                            >{{ old('message') }}</textarea>
+                            @error('message')
+                                <p class="mt-1.5 text-xs text-destructive">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full">
+                            Kirim pesan
+                            <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+
                 <div class="card-bento reveal space-y-5 p-6 sm:p-8" data-reveal style="transition-delay: 80ms" aria-labelledby="tips-heading">
                     <h2 id="tips-heading" class="font-heading text-lg font-semibold tracking-tight text-foreground sm:text-xl">
                         Biar cepat dijawab
@@ -161,4 +248,36 @@
             </aside>
         </div>
     </section>
+
+    @if (! empty($faq))
+        <section class="border-t border-border/60 bg-muted/30" aria-labelledby="faq-heading">
+            <div class="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                    FAQ
+                </p>
+                <h2 id="faq-heading" class="mt-4 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                    Pertanyaan yang sering muncul
+                </h2>
+
+                <div class="mt-6 space-y-2.5 sm:mt-8" data-stagger>
+                    @foreach ($faq as $item)
+                        <details class="faq-item reveal group overflow-hidden rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm transition-shadow duration-200 open:shadow-card sm:rounded-2xl" data-reveal>
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold text-foreground marker:hidden transition-colors duration-200 hover:bg-muted/50 sm:px-5 sm:text-base">
+                                {{ $item['question'] }}
+                                <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-200 group-open:rotate-45" aria-hidden="true">
+                                    <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 5v14" />
+                                        <path d="M5 12h14" />
+                                    </svg>
+                                </span>
+                            </summary>
+                            <p class="px-4 pb-4 text-sm leading-relaxed text-muted-foreground sm:px-5">
+                                {{ $item['answer'] }}
+                            </p>
+                        </details>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 </x-layout>

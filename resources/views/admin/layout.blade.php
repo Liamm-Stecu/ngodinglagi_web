@@ -35,7 +35,7 @@
         }
     </style>
 </head>
-<body class="admin-shell font-body antialiased">
+<body class="admin-shell antialiased">
     <div class="flex min-h-screen flex-col lg:flex-row">
         <aside class="admin-sidebar flex flex-col gap-1 border-b border-white/5 p-4 lg:w-60 lg:shrink-0 lg:border-b-0 lg:border-r lg:p-5">
             <a href="{{ route('home') }}" class="animate-fade-up mb-4 flex items-center gap-2.5 px-1 py-1">
@@ -59,6 +59,7 @@
                         ['route' => 'admin.services.edit', 'label' => 'Layanan', 'icon' => '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>'],
                         ['route' => 'admin.portfolio.edit', 'label' => 'Tentang', 'icon' => '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>'],
                         ['route' => 'admin.partner.edit', 'label' => 'Mitra', 'icon' => '<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>'],
+                        ['route' => 'admin.messages.index', 'label' => 'Pesan', 'icon' => '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>'],
                     ];
                 @endphp
                 @foreach ($nav as $i => $item)

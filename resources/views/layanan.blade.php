@@ -2,10 +2,12 @@
     :title="'Layanan — ngodinglagi'"
     description="Layanan ngodinglagi: web development, SA-MP/Open.MP, dan VPS/server administration."
 >
-    <section class="relative overflow-hidden border-b border-border/60">
+    <section class="relative overflow-hidden border-b border-border/50">
+        <div class="mesh-gradient" aria-hidden="true"></div>
+        <div class="grid-pattern" aria-hidden="true"></div>
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <div class="decorative-blob -right-16 -top-20 size-64 bg-secondary/12 sm:size-80"></div>
-            <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/8" style="animation-delay: 1.8s"></div>
+            <div class="decorative-blob -right-16 -top-20 size-64 bg-secondary/10 sm:size-80"></div>
+            <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/6" style="animation-delay: 1.8s"></div>
         </div>
 
         <div class="relative mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
@@ -17,7 +19,7 @@
                     Apa yang bisa<br class="hidden sm:block">
                     dikerjakan
                 </h1>
-                <p class="animate-rise-in text-base leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
+                <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Tiga bidang utama: website, server game SA-MP/Open.MP, dan infrastruktur VPS. Lingkup kerja disepakati di awal.
                 </p>
             </div>
@@ -170,9 +172,10 @@
         @endforeach
     </section>
 
-    <section class="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
-        <article class="card-bento reveal border-primary/20 bg-primary text-on-primary" data-reveal>
-            <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+    <section class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:pb-20">
+        <article class="card-bento reveal overflow-hidden border-primary/20 bg-gradient-to-br from-primary via-primary to-accent text-on-primary" data-reveal>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_20%,rgba(255,255,255,0.1),transparent_60%)]" aria-hidden="true"></div>
+            <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
                 <div class="space-y-2">
                     <h2 class="font-heading text-xl font-semibold tracking-tight sm:text-2xl">
                         Ada yang mau dikerjakan?
@@ -202,4 +205,37 @@
             </div>
         </article>
     </section>
+
+    @php $faq = config('content.faq', []); @endphp
+    @if (! empty($faq))
+        <section class="border-t border-border/60 bg-muted/30" aria-labelledby="faq-heading">
+            <div class="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                    FAQ
+                </p>
+                <h2 id="faq-heading" class="mt-4 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                    Pertanyaan yang sering muncul
+                </h2>
+
+                <div class="mt-6 space-y-2.5 sm:mt-8" data-stagger>
+                    @foreach ($faq as $item)
+                        <details class="faq-item reveal group overflow-hidden rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm transition-shadow duration-200 open:shadow-card sm:rounded-2xl" data-reveal>
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold text-foreground marker:hidden transition-colors duration-200 hover:bg-muted/50 sm:px-5 sm:text-base">
+                                {{ $item['question'] }}
+                                <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-200 group-open:rotate-45" aria-hidden="true">
+                                    <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 5v14" />
+                                        <path d="M5 12h14" />
+                                    </svg>
+                                </span>
+                            </summary>
+                            <p class="px-4 pb-4 text-sm leading-relaxed text-muted-foreground sm:px-5">
+                                {{ $item['answer'] }}
+                            </p>
+                        </details>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 </x-layout>

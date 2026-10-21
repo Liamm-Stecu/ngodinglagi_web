@@ -7,7 +7,7 @@
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div class="animate-fade-up">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Panel</p>
-            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900">Layanan</h1>
+            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Layanan</h1>
             <p class="mt-1 text-sm text-slate-500">Edit deskripsi, cakupan kerja, dan harga.</p>
         </div>
         <a href="{{ route('admin.dashboard') }}" class="admin-btn admin-btn-ghost">← Dashboard</a>

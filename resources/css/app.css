@@ -30,6 +30,8 @@
     --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.04);
     --shadow-card-hover: 0 4px 8px rgba(15, 23, 42, 0.05), 0 14px 28px rgba(15, 23, 42, 0.07);
     --shadow-header: 0 1px 0 rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.04);
+    --shadow-float: 0 8px 32px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+    --shadow-glow: 0 0 0 1px rgba(15, 118, 110, 0.1), 0 4px 16px rgba(15, 118, 110, 0.12);
 
     --animate-brand-in: brand-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
     --animate-rise-in: rise-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -55,6 +57,8 @@
     --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.25);
     --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.4), 0 14px 28px rgba(0, 0, 0, 0.3);
     --shadow-header: 0 1px 0 rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+    --shadow-float: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 0 1px rgba(20, 184, 166, 0.15), 0 4px 16px rgba(20, 184, 166, 0.12);
 }
 
 @keyframes brand-in {
@@ -144,7 +148,7 @@
 @layer base {
     html {
         scroll-behavior: smooth;
-        scroll-padding-top: 5.5rem;
+        scroll-padding-top: 6rem;
     }
 
     body {
@@ -182,7 +186,24 @@
 
 @utility card-bento-hover {
     &:hover {
-        @apply -translate-y-0.5 border-primary/15 shadow-card-hover;
+        @apply -translate-y-1 border-primary/20 shadow-card-hover;
+    }
+}
+
+@utility card-glass {
+    @apply relative rounded-xl border border-white/20 bg-white/60 p-5 shadow-float backdrop-blur-xl transition-[box-shadow,transform,border-color] duration-300 ease-out sm:rounded-2xl sm:p-6;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+
+    &:hover {
+        @apply -translate-y-1 border-primary/20;
+        box-shadow: var(--shadow-glow);
+    }
+}
+
+.dark {
+    .card-glass {
+        border-color: rgba(255, 255, 255, 0.08);
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 0%, rgba(17, 24, 39, 0.5) 100%);
     }
 }
 
@@ -200,7 +221,7 @@
 }
 
 @utility btn-primary {
-    @apply inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent shadow-[0_1px_2px_rgba(13,148,136,0.25)] transition-all duration-200 ease-out hover:bg-primary hover:shadow-[0_6px_16px_rgba(13,148,136,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:min-h-11 sm:px-6 sm:py-3;
+    @apply inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary shadow-[0_2px_8px_rgba(15,118,110,0.3)] transition-all duration-200 ease-out hover:bg-accent hover:shadow-[0_6px_20px_rgba(15,118,110,0.35)] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:min-h-11 sm:px-6 sm:py-3;
 
     svg {
         @apply transition-transform duration-200 ease-out;
@@ -213,7 +234,7 @@
 }
 
 @utility btn-secondary {
-    @apply inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border bg-card/70 px-5 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 ease-out hover:border-primary/35 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:min-h-11 sm:px-6 sm:py-3;
+    @apply inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-xl border border-border bg-card/80 px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition-all duration-200 ease-out hover:border-primary/30 hover:bg-muted hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:min-h-11 sm:px-6 sm:py-3;
 }
 
 @utility reveal {
@@ -249,10 +270,13 @@
     transition:
         box-shadow 0.25s ease,
         background-color 0.25s ease,
-        border-color 0.25s ease;
+        border-color 0.25s ease,
+        padding 0.25s ease;
 
     &.is-scrolled {
-        @apply border-border/90 bg-background/95 shadow-header;
+        @apply border-border/80 bg-background/95 shadow-float;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
     }
 }
 
@@ -262,6 +286,36 @@
     border-radius: 9999px;
     filter: blur(0px);
     animation: soft-pulse 8s ease-in-out infinite;
+}
+
+@utility mesh-gradient {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(20, 184, 166, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(15, 118, 110, 0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(45, 212, 191, 0.04) 0%, transparent 40%);
+}
+
+@utility grid-pattern {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(15, 118, 110, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 118, 110, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 80%);
+}
+
+@utility section-divider {
+    @apply border-t border-border/50;
+}
+
+@utility pill-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-primary;
 }
 
 @utility nav-link {

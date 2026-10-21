@@ -3,10 +3,12 @@
     description="Kenali ngodinglagi: jasa web development, SA-MP/Open.MP, dan VPS/server administration dengan komunikasi jelas."
 >
     {{-- Header --}}
-    <section class="relative overflow-hidden border-b border-border/60">
+    <section class="relative overflow-hidden border-b border-border/50">
+        <div class="mesh-gradient" aria-hidden="true"></div>
+        <div class="grid-pattern" aria-hidden="true"></div>
         <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <div class="decorative-blob -right-16 -top-20 size-64 bg-secondary/12 sm:size-80"></div>
-            <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/8" style="animation-delay: 1.8s"></div>
+            <div class="decorative-blob -right-16 -top-20 size-64 bg-secondary/10 sm:size-80"></div>
+            <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/6" style="animation-delay: 1.8s"></div>
         </div>
 
         <div class="relative mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
@@ -24,7 +26,7 @@
             </div>
 
             <div class="mt-6 grid gap-2.5 sm:mt-8 sm:grid-cols-2 sm:gap-4">
-                <div class="card-bento animate-rise-in flex items-end justify-between gap-3 p-4 sm:p-6" style="animation-delay: 200ms" aria-label="Total proyek SA-MP">
+                <div class="card-glass animate-rise-in flex items-end justify-between gap-3 p-4 sm:p-6" style="animation-delay: 200ms" aria-label="Total proyek SA-MP">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">SA-MP / Open.MP</p>
                         <p class="mt-1 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-5xl" data-count-to="{{ $stats['samp'] }}">
@@ -43,7 +45,7 @@
                     </span>
                 </div>
 
-                <div class="card-bento animate-rise-in flex items-end justify-between gap-3 p-4 sm:p-6" style="animation-delay: 280ms" aria-label="Total proyek website">
+                <div class="card-glass animate-rise-in flex items-end justify-between gap-3 p-4 sm:p-6" style="animation-delay: 280ms" aria-label="Total proyek website">
                     <div>
                         <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Website</p>
                         <p class="mt-1 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-5xl" data-count-to="{{ $stats['web'] }}">
@@ -195,10 +197,80 @@
         @endforeach
     </section>
 
+    {{-- Testimoni (hanya tampil jika ada data asli dari config) --}}
+    @php $testimonials = config('content.testimonials', []); @endphp
+    @if (! empty($testimonials))
+        <section class="border-t border-border/60 bg-muted/30" aria-labelledby="testimoni-heading">
+            <div class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                    Testimoni
+                </p>
+                <h2 id="testimoni-heading" class="mt-4 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                    Kata mereka
+                </h2>
+
+                <div class="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4" data-stagger>
+                    @foreach ($testimonials as $testimonial)
+                        <figure class="card-bento reveal flex flex-col gap-3 p-5 sm:p-6" data-reveal>
+                            <blockquote class="text-sm leading-relaxed text-muted-foreground">
+                                "{{ $testimonial['quote'] }}"
+                            </blockquote>
+                            <figcaption class="mt-auto border-t border-border pt-3 text-sm">
+                                <p class="font-semibold text-foreground">{{ $testimonial['name'] }}</p>
+                                <p class="text-xs text-muted-foreground">{{ $testimonial['role'] }}</p>
+                            </figcaption>
+                        </figure>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    {{-- Case study (hanya tampil jika ada data asli dari config) --}}
+    @php $caseStudies = config('content.case_studies', []); @endphp
+    @if (! empty($caseStudies))
+        <section class="border-t border-border/60" aria-labelledby="case-heading">
+            <div class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                    Studi kasus
+                </p>
+                <h2 id="case-heading" class="mt-4 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                    Proyek yang menarik dibahas
+                </h2>
+
+                <div class="mt-6 space-y-3 sm:mt-8 sm:space-y-4" data-stagger>
+                    @foreach ($caseStudies as $study)
+                        <article class="card-bento card-bento-hover reveal p-5 sm:p-6" data-reveal>
+                            <div class="flex flex-wrap items-center gap-2">
+                                <h3 class="font-heading text-base font-semibold text-foreground sm:text-lg">
+                                    {{ $study['title'] }}
+                                </h3>
+                                @if (! empty($study['tag']))
+                                    <span class="rounded-full border border-primary/15 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary">
+                                        {{ $study['tag'] }}
+                                    </span>
+                                @endif
+                            </div>
+                            <p class="mt-2 text-sm leading-relaxed text-muted-foreground">
+                                {{ $study['summary'] }}
+                            </p>
+                            @if (! empty($study['result']))
+                                <p class="mt-3 border-t border-border pt-3 text-sm font-medium text-foreground">
+                                    Hasil: {{ $study['result'] }}
+                                </p>
+                            @endif
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
     {{-- CTA --}}
-    <section class="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
-        <article class="card-bento reveal border-primary/20 bg-primary text-on-primary" data-reveal>
-            <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+    <section class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:pb-20">
+        <article class="card-bento reveal overflow-hidden border-primary/20 bg-gradient-to-br from-primary via-primary to-accent text-on-primary" data-reveal>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_20%,rgba(255,255,255,0.1),transparent_60%)]" aria-hidden="true"></div>
+            <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
                 <div class="space-y-2">
                     <h2 class="font-heading text-xl font-semibold tracking-tight sm:text-2xl">
                         Cocok butuh bantuan serupa?

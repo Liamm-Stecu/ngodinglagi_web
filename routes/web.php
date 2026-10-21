@@ -3,9 +3,11 @@
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminMessagesController;
 use App\Http\Controllers\Admin\AdminPartnerController;
 use App\Http\Controllers\Admin\AdminPortfolioController;
 use App\Http\Controllers\Admin\AdminServicesController;
+use App\Http\Controllers\ContactMessageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -31,9 +33,20 @@ Route::get('/layanan', function () {
     ]);
 })->name('layanan');
 
-Route::get('/kontak', function () {
-    return view('kontak');
-})->name('kontak');
+Route::get('/kontak', [ContactMessageController::class, 'create'])->name('kontak');
+Route::post('/kontak', [ContactMessageController::class, 'store'])->middleware('throttle:contact-form')->name('kontak.store');
+
+Route::get('/privacy', function () {
+    return view('privacy');
+})->name('privacy');
+
+Route::get('/terms', function () {
+    return view('terms');
+})->name('terms');
+
+Route::get('/changelog', function () {
+    return view('changelog');
+})->name('changelog');
 
 Route::get('/sitemap.xml', function () {
     $urls = collect([
@@ -41,6 +54,9 @@ Route::get('/sitemap.xml', function () {
         ['loc' => route('layanan'), 'priority' => '0.9', 'changefreq' => 'monthly'],
         ['loc' => route('about'), 'priority' => '0.8', 'changefreq' => 'monthly'],
         ['loc' => route('kontak'), 'priority' => '0.7', 'changefreq' => 'yearly'],
+        ['loc' => route('privacy'), 'priority' => '0.2', 'changefreq' => 'yearly'],
+        ['loc' => route('terms'), 'priority' => '0.2', 'changefreq' => 'yearly'],
+        ['loc' => route('changelog'), 'priority' => '0.4', 'changefreq' => 'monthly'],
     ]);
 
     $xml = '<?xml version="1.0" encoding="UTF-8"?>'.PHP_EOL;
@@ -92,6 +108,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/portofolio/kategori/hapus/{index}', [AdminPortfolioController::class, 'destroyCategory'])->whereNumber('index')->name('admin.portfolio.category.destroy');
         Route::get('/mitra', [AdminPartnerController::class, 'edit'])->name('admin.partner.edit');
         Route::post('/mitra', [AdminPartnerController::class, 'update'])->name('admin.partner.update');
+        Route::get('/pesan', [AdminMessagesController::class, 'index'])->name('admin.messages.index');
+        Route::post('/pesan/hapus/{id}', [AdminMessagesController::class, 'destroy'])->whereNumber('id')->name('admin.messages.destroy');
         Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
     });
 });

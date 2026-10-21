@@ -17,16 +17,12 @@
         .admin-btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; background: #0f766e; color: #fff; font-weight: 600; font-size: .875rem; border-radius: .85rem; padding: .65rem 1.1rem; transition: background .15s ease, transform .15s ease, box-shadow .15s ease; }
         .admin-btn:hover { background: #0d9488; transform: translateY(-1px); box-shadow: 0 8px 18px rgba(15,118,110,.25); }
         .admin-error { color: #b91c1c; font-size: .8rem; background: #fef2f2; border: 1px solid #fecaca; border-radius: .7rem; padding: .65rem .85rem; }
-        @keyframes fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes rise-in { from { opacity: 0; transform: translateY(18px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        .animate-fade-up { animation: fade-up .45s cubic-bezier(.22,1,.36,1) both; }
-        .animate-rise-in { animation: rise-in .55s cubic-bezier(.22,1,.36,1) both; }
         @media (prefers-reduced-motion: reduce) {
-            .admin-btn, .admin-input, .animate-fade-up, .animate-rise-in { transition: none !important; animation: none !important; transform: none !important; }
+            .admin-btn, .admin-input { transition: none !important; transform: none !important; }
         }
     </style>
 </head>
-<body class="admin-shell font-body antialiased">
+<body class="admin-shell antialiased">
     @yield('content')
 </body>
 </html>

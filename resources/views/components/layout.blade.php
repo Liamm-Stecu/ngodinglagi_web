@@ -25,6 +25,15 @@
         <meta name="twitter:title" content="{{ $pageTitle }}">
         <meta name="twitter:description" content="{{ $pageDescription }}">
 
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+        <link rel="icon" href="/favicon.ico" sizes="32x32">
+        <link rel="apple-touch-icon" href="/favicon.svg">
+        <meta name="theme-color" content="#0F766E">
+
+        @if (config('app.analytics_url'))
+            <script defer data-domain="{{ parse_url(config('app.analytics_url'), PHP_URL_HOST) }}" src="https://plausible.io/js/script.js"></script>
+        @endif
+
         <script>
             (function () {
                 try {
@@ -78,13 +87,13 @@
             Lewati ke konten utama
         </a>
 
-        <header data-header class="header-bar sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
-            <div class="mx-auto flex w-full max-w-6xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-4 lg:px-8">
+        <header data-header class="header-bar fixed left-0 right-0 top-0 z-40 px-3 pt-3 sm:px-6 sm:pt-4">
+            <div class="mx-auto flex w-full max-w-5xl items-center justify-between gap-2 rounded-2xl border border-border/60 bg-background/80 px-3 py-2 shadow-card backdrop-blur-xl sm:gap-3 sm:rounded-full sm:px-5 sm:py-2.5">
                 <a
                     href="{{ route('home') }}"
                     class="group flex items-center gap-2.5 text-foreground transition-colors duration-200 hover:text-primary"
                 >
-                    <span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-on-primary shadow-sm sm:size-9 sm:rounded-xl" aria-hidden="true">
+                    <span class="inline-flex size-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-on-primary shadow-[0_2px_8px_rgba(15,118,110,0.3)] sm:size-9" aria-hidden="true">
                         <svg class="size-[58%]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M11 6 5 12l6 6" />
                             <path d="m14 5 5 14" />
@@ -101,15 +110,15 @@
                     </span>
                 </a>
 
-                <div class="flex items-center gap-1 sm:gap-2">
+                <div class="flex items-center gap-1 sm:gap-1.5">
                     <nav aria-label="Navigasi utama" class="min-w-0">
-                        <ul class="flex items-center gap-0.5 sm:gap-2">
+                        <ul class="flex items-center gap-0.5 sm:gap-1">
                         <li>
                             <a
                                 href="{{ route('home') }}"
                                 @class([
-                                    'group nav-link inline-flex min-h-10 items-center rounded-lg px-2 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:min-h-11 sm:px-3',
-                                    'bg-muted text-foreground' => request()->routeIs('home'),
+                                    'group inline-flex min-h-9 items-center rounded-full px-2.5 text-sm font-medium transition-all duration-200 focus-visible:text-foreground sm:min-h-10 sm:px-3.5',
+                                    'bg-primary/10 text-primary' => request()->routeIs('home'),
                                     'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('home'),
                                 ])
                             >
@@ -120,8 +129,8 @@
                             <a
                                 href="{{ route('layanan') }}"
                                 @class([
-                                    'group nav-link inline-flex min-h-10 items-center rounded-lg px-2 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:min-h-11 sm:px-3',
-                                    'bg-muted text-foreground' => request()->routeIs('layanan'),
+                                    'group inline-flex min-h-9 items-center rounded-full px-2.5 text-sm font-medium transition-all duration-200 focus-visible:text-foreground sm:min-h-10 sm:px-3.5',
+                                    'bg-primary/10 text-primary' => request()->routeIs('layanan'),
                                     'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('layanan'),
                                 ])
                             >
@@ -132,8 +141,8 @@
                             <a
                                 href="{{ route('about') }}"
                                 @class([
-                                    'group nav-link inline-flex min-h-10 items-center rounded-lg px-2 text-sm font-medium transition-colors duration-200 focus-visible:text-foreground sm:min-h-11 sm:px-3',
-                                    'bg-muted text-foreground' => request()->routeIs('about'),
+                                    'group inline-flex min-h-9 items-center rounded-full px-2.5 text-sm font-medium transition-all duration-200 focus-visible:text-foreground sm:min-h-10 sm:px-3.5',
+                                    'bg-primary/10 text-primary' => request()->routeIs('about'),
                                     'text-muted-foreground hover:bg-muted hover:text-foreground' => ! request()->routeIs('about'),
                                 ])
                             >
@@ -144,8 +153,8 @@
                             <a
                                 href="{{ route('kontak') }}"
                                 @class([
-                                    'group inline-flex min-h-10 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold shadow-[0_1px_2px_rgba(15,118,110,0.3)] transition-all duration-200 sm:min-h-11 sm:px-4',
-                                    'bg-primary text-on-primary hover:bg-primary/90 hover:shadow-[0_6px_16px_rgba(15,118,110,0.28)]' => ! request()->routeIs('kontak'),
+                                    'group inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-sm font-semibold shadow-[0_2px_8px_rgba(15,118,110,0.25)] transition-all duration-200 hover:-translate-y-0.5 sm:min-h-10 sm:px-4',
+                                    'bg-primary text-on-primary hover:bg-accent hover:shadow-[0_4px_16px_rgba(15,118,110,0.35)]' => ! request()->routeIs('kontak'),
                                     'bg-foreground text-background' => request()->routeIs('kontak'),
                                 ])
                             >
@@ -162,7 +171,7 @@
                 <button
                     type="button"
                     data-theme-toggle
-                    class="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:size-10"
+                    class="inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:size-9"
                     aria-label="Ganti tema terang atau gelap"
                 >
                     <svg class="size-4 dark:hidden" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -184,58 +193,99 @@
             </div>
         </header>
 
-        <main id="konten">
+        <main id="konten" class="pt-20 sm:pt-22">
             {{ $slot }}
         </main>
 
-        <footer class="border-t border-border">
-            <div class="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-8 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-                <div class="space-y-1">
-                    <div class="flex items-center gap-2.5">
-                        <span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-on-primary" aria-hidden="true">
-                            <svg class="size-[58%]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M11 6 5 12l6 6" />
-                                <path d="m14 5 5 14" />
-                            </svg>
-                        </span>
-                        <p class="font-heading text-sm font-semibold text-foreground">ngodinglagi</p>
+        <footer class="section-divider">
+            <div class="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2.5">
+                            <span class="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-on-primary shadow-[0_2px_8px_rgba(15,118,110,0.3)]" aria-hidden="true">
+                                <svg class="size-[58%]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 6 5 12l6 6" />
+                                    <path d="m14 5 5 14" />
+                                </svg>
+                            </span>
+                            <p class="font-heading text-base font-semibold text-foreground">ngodinglagi</p>
+                        </div>
+                        <p class="max-w-xs text-sm leading-relaxed text-muted-foreground">
+                            Bantuan teknis untuk website, SA-MP/Open.MP, dan VPS — komunikasi jelas, hasil siap dipakai.
+                        </p>
                     </div>
-                    <p class="pl-[2.25rem] text-sm text-muted-foreground">
-                        Web · SA-MP/Open.MP · VPS
-                    </p>
+
+                    <div class="space-y-3">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Layanan</p>
+                        <ul class="space-y-1.5">
+                            <li>
+                                <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Web Development
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    SA-MP / Open.MP
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    VPS / Server
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Perusahaan</p>
+                        <ul class="space-y-1.5">
+                            <li>
+                                <a href="{{ route('about') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Tentang
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('kontak') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Kontak
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('changelog') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Changelog
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ config('products.affiliate_url') }}" target="_blank" rel="noopener noreferrer sponsored" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Wide Host Media
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Legal</p>
+                        <ul class="space-y-1.5">
+                            <li>
+                                <a href="{{ route('privacy') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Kebijakan Privasi
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('terms') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Syarat &amp; Ketentuan
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
-                    <a
-                        href="{{ route('layanan') }}"
-                        class="inline-flex min-h-10 items-center rounded-lg px-3 transition-colors duration-200 hover:bg-muted hover:text-foreground"
-                    >
-                        Layanan
-                    </a>
-                    <a
-                        href="{{ route('about') }}"
-                        class="inline-flex min-h-10 items-center rounded-lg px-3 transition-colors duration-200 hover:bg-muted hover:text-foreground"
-                    >
-                        Tentang
-                    </a>
-                    <a
-                        href="{{ route('kontak') }}"
-                        class="inline-flex min-h-10 items-center rounded-lg px-3 transition-colors duration-200 hover:bg-muted hover:text-foreground"
-                    >
-                        Kontak
-                    </a>
-                    <a
-                        href="{{ config('products.affiliate_url') }}"
-                        target="_blank"
-                        rel="noopener noreferrer sponsored"
-                        class="inline-flex min-h-10 items-center rounded-lg px-3 transition-colors duration-200 hover:bg-muted hover:text-foreground"
-                    >
-                        Wide Host Media
-                    </a>
+                <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-6 sm:flex-row">
+                    <p class="text-sm text-muted-foreground/80">&copy; {{ date('Y') }} ngodinglagi. Semua hak dilindungi.</p>
+                    <p class="text-sm text-muted-foreground/60">Dibuat dengan <span class="text-primary" aria-hidden="true">♥</span> di Indonesia</p>
                 </div>
-
-                <p class="text-sm text-muted-foreground/80">&copy; {{ date('Y') }} ngodinglagi</p>
             </div>
         </footer>
+
+        @include('components.floating-wa')
     </body>
 </html>

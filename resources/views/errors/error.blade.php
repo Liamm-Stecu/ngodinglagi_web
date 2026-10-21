@@ -95,4 +95,4 @@
             </a>
         </div>
     </main>
-</x-errors.layout>
+</x-error-shell>

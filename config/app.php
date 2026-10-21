@@ -17,6 +17,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Analytics (Plausible)
+    |--------------------------------------------------------------------------
+    |
+    | Opsional. Isi dengan URL domain utama (mis. https://lagingoding.my.id)
+    | untuk mengaktifkan script Plausible di seluruh halaman publik.
+    |
+    */
+
+    'analytics_url' => env('ANALYTICS_URL'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |

@@ -3,11 +3,11 @@
 @section('title', 'Tentang')
 
 @section('content')
-<div class="mx-auto w-full max-w-3xl">
+<div class="mx-auto w-full max-w-4xl">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div class="animate-fade-up">
             <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Panel</p>
-            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900">Tentang</h1>
+            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Tentang</h1>
             <p class="mt-1 text-sm text-slate-500">Edit statistik &amp; bidang di halaman Tentang.</p>
         </div>
         <a href="{{ route('admin.dashboard') }}" class="admin-btn admin-btn-ghost">← Dashboard</a>
