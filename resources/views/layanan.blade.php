@@ -1,6 +1,6 @@
 <x-layout
-    :title="'Layanan — ngodinglagi'"
-    description="Layanan ngodinglagi: web development, SA-MP/Open.MP, dan VPS/server administration."
+    :title="'Layanan — LagiNgoding'"
+    description="Layanan LagiNgoding: web development, SA-MP/Open.MP, dan VPS/server administration."
 >
     <section class="relative overflow-hidden border-b border-border/50">
         <div class="mesh-gradient" aria-hidden="true"></div>
@@ -10,59 +10,66 @@
             <div class="decorative-blob -bottom-24 -left-12 size-48 bg-primary/6" style="animation-delay: 1.8s"></div>
         </div>
 
-        <div class="relative mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
+        <div class="relative mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-20">
             <div class="max-w-2xl space-y-4">
-                <p class="animate-rise-in inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                    Layanan
-                </p>
+                <p class="pill-badge animate-rise-in">Layanan</p>
                 <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
                     Apa yang bisa<br class="hidden sm:block">
                     dikerjakan
                 </h1>
                 <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                    Tiga bidang utama: website, server game SA-MP/Open.MP, dan infrastruktur VPS. Lingkup kerja disepakati di awal.
+                    Tiga bidang utama: website, server game SA-MP/Open.MP, dan infrastruktur VPS. Klik salah satu untuk lihat lingkup kerja &amp; harga.
                 </p>
             </div>
 
-            <ol class="mt-10 grid gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-4" aria-label="Alur kerja">
+            <ol class="mt-10 flex flex-wrap gap-2.5 sm:mt-12" aria-label="Alur kerja">
                 @foreach ([
-                    ['step' => '01', 'title' => 'Diskusi', 'desc' => 'Ceritakan kebutuhan, kita tentukan lingkupnya.'],
-                    ['step' => '02', 'title' => 'Dikerjakan', 'desc' => 'Progres dikabari tanpa perlu ditanya terus.'],
-                    ['step' => '03', 'title' => 'Diserahkan', 'desc' => 'Hasil siap dipakai, dibantu kalau ada kendala.'],
+                    ['step' => '01', 'title' => 'Diskusi', 'desc' => 'Tentukan lingkup kerja'],
+                    ['step' => '02', 'title' => 'Dikerjakan', 'desc' => 'Progres dikabari'],
+                    ['step' => '03', 'title' => 'Diserahkan', 'desc' => 'Hasil siap dipakai'],
                 ] as $flowIndex => $flow)
-                    <li class="animate-rise-in flex items-start gap-3 rounded-2xl border border-border/70 bg-card/70 px-4 py-4 backdrop-blur-sm sm:px-5" style="animation-delay: {{ 200 + $flowIndex * 80 }}ms">
-                        <span class="font-heading text-sm font-semibold text-primary" aria-hidden="true">{{ $flow['step'] }}</span>
-                        <div>
-                            <p class="font-heading text-sm font-semibold text-foreground">{{ $flow['title'] }}</p>
-                            <p class="mt-0.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">{{ $flow['desc'] }}</p>
-                        </div>
+                    <li class="animate-rise-in inline-flex items-center gap-2.5 rounded-full border border-border/70 bg-card/70 px-4 py-2 backdrop-blur-sm" style="animation-delay: {{ 200 + $flowIndex * 80 }}ms">
+                        <span class="text-xs font-semibold text-primary" aria-hidden="true">{{ $flow['step'] }}</span>
+                        <span class="font-heading text-sm font-semibold text-foreground">{{ $flow['title'] }}</span>
+                        <span class="hidden text-xs text-muted-foreground sm:inline">· {{ $flow['desc'] }}</span>
                     </li>
                 @endforeach
             </ol>
         </div>
     </section>
 
-    <section class="mx-auto w-full max-w-6xl space-y-4 px-4 py-8 sm:space-y-5 sm:px-6 sm:py-14 lg:px-8">
-        @foreach ($services as $index => $service)
-            <article
-                class="card-bento card-bento-hover card-accent-top reveal overflow-hidden"
-                data-reveal="scale"
-                style="transition-delay: {{ $index * 60 }}ms"
-                aria-labelledby="layanan-{{ $service['slug'] }}"
-            >
-                <div class="flex flex-col gap-6 p-6 sm:p-8">
-                    <header class="flex items-start justify-between gap-4">
-                        <div class="flex items-start gap-4">
-                            <span class="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-on-primary shadow-[0_4px_12px_rgba(15,118,110,0.2)]" aria-hidden="true">
+    <section class="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8" aria-label="Daftar layanan">
+        <div class="space-y-3">
+            @foreach ($services as $index => $service)
+                @php
+                    $tiers = data_get($service, 'pricing.tiers', []);
+                    $panelId = 'layanan-panel-' . $service['slug'];
+                @endphp
+                <article
+                    class="accordion-item card-bento reveal"
+                    data-accordion-item
+                    data-reveal="scale"
+                    style="transition-delay: {{ $index * 60 }}ms"
+                    aria-labelledby="layanan-{{ $service['slug'] }}"
+                >
+                    <h2 id="layanan-{{ $service['slug'] }}" class="m-0">
+                        <button
+                            type="button"
+                            class="flex w-full items-center gap-4 px-5 py-5 text-left transition-colors duration-200 hover:bg-muted/40 sm:gap-5 sm:px-7 sm:py-6"
+                            data-accordion-trigger
+                            aria-expanded="false"
+                            aria-controls="{{ $panelId }}"
+                        >
+                            <span class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-on-primary shadow-[0_4px_12px_rgba(15,118,110,0.2)] sm:size-12 sm:rounded-2xl" aria-hidden="true">
                                 @switch($service['slug'])
                                     @case('web')
-                                        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="size-5 sm:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="16 18 22 12 16 6" />
                                             <polyline points="8 6 2 12 8 18" />
                                         </svg>
                                         @break
                                     @case('samp')
-                                        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="size-5 sm:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M6 11h4" />
                                             <path d="M8 9v4" />
                                             <path d="M15 12h.01" />
@@ -71,7 +78,7 @@
                                         </svg>
                                         @break
                                     @default
-                                        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="size-5 sm:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                                             <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
                                             <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
                                             <line x1="6" x2="6.01" y1="6" y2="6" />
@@ -79,100 +86,126 @@
                                         </svg>
                                 @endswitch
                             </span>
-                            <div class="space-y-1.5 pt-0.5">
-                                <p class="font-heading text-xs font-semibold uppercase tracking-widest text-primary" aria-hidden="true">
-                                    {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
-                                </p>
-                                <h2 id="layanan-{{ $service['slug'] }}" class="font-heading text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">
-                                    {{ $service['title'] }}
-                                </h2>
-                                <p class="max-w-md text-sm leading-relaxed text-muted-foreground">
+
+                            <span class="min-w-0 flex-1">
+                                <span class="flex items-baseline gap-2">
+                                    <span class="text-xs font-semibold uppercase tracking-widest text-primary" aria-hidden="true">
+                                        {{ str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) }}
+                                    </span>
+                                    <span class="font-heading text-base font-semibold leading-tight tracking-tight text-foreground sm:text-xl">
+                                        {{ $service['title'] }}
+                                    </span>
+                                </span>
+                                <span class="mt-1 block truncate text-sm text-muted-foreground">
                                     {{ $service['short'] }}
+                                </span>
+                            </span>
+
+                            @if (! empty($tiers[0]['price']))
+                                <span class="hidden shrink-0 flex-col items-end sm:flex">
+                                    <span class="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                                        {{ data_get($service, 'pricing.label', 'Mulai dari') }}
+                                    </span>
+                                    <span class="font-heading text-sm font-semibold text-primary">
+                                        {{ $tiers[0]['price'] }}
+                                    </span>
+                                </span>
+                            @endif
+
+                            <span class="flex size-8 shrink-0 items-center justify-center rounded-full border border-border/70 bg-muted/50 text-muted-foreground" aria-hidden="true">
+                                <svg class="accordion-chevron size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="m6 9 6 6 6-6" />
+                                </svg>
+                            </span>
+                        </button>
+                    </h2>
+
+                    <div class="accordion-panel" id="{{ $panelId }}" role="region" aria-labelledby="layanan-{{ $service['slug'] }}">
+                        <div class="accordion-inner">
+                            <div class="space-y-5 border-t border-border/70 px-5 pb-6 pt-5 sm:px-7 sm:pb-7">
+                                <p class="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+                                    {{ $service['description'] }}
                                 </p>
+
+                                <div class="grid gap-5 sm:grid-cols-2 sm:gap-8">
+                                    <div class="space-y-3">
+                                        <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                            Cakupan kerja
+                                        </h3>
+                                        <ul class="grid gap-2 text-sm text-foreground">
+                                            @foreach ($service['items'] as $item)
+                                                <li class="flex items-start gap-2.5">
+                                                    <svg class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <polyline points="20 6 9 17 4 12" />
+                                                    </svg>
+                                                    {{ $item }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                            Cocok untuk
+                                        </h3>
+                                        <ul class="flex flex-wrap gap-2">
+                                            @foreach ($service['for'] as $fit)
+                                                <li class="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary sm:text-sm">
+                                                    {{ $fit }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                @if (! empty($tiers))
+                                    <div class="rounded-2xl border border-border/70 bg-muted/30 p-4 sm:p-5">
+                                        <div class="flex items-baseline gap-2">
+                                            <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                                                {{ data_get($service, 'pricing.label', 'Harga') }}
+                                            </h3>
+                                            <span class="text-xs text-muted-foreground/70">— bisa nego sesuai lingkup</span>
+                                        </div>
+
+                                        <ul class="mt-3 grid gap-2 sm:grid-cols-3 sm:gap-3">
+                                            @foreach ($tiers as $tierIndex => $tier)
+                                                <li class="animate-rise-in flex flex-col justify-between gap-3 rounded-xl border border-border/80 bg-card px-4 py-3.5" style="animation-delay: {{ 80 + $tierIndex * 70 }}ms">
+                                                    <div class="space-y-1">
+                                                        <p class="text-sm font-medium text-foreground">{{ $tier['name'] }}</p>
+                                                        <p class="text-xs leading-relaxed text-muted-foreground">{{ $tier['note'] }}</p>
+                                                    </div>
+                                                    <p class="font-heading text-base font-semibold tracking-tight text-primary sm:text-lg">
+                                                        {{ $tier['price'] }}
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                        <div class="mt-4">
+                                            <a
+                                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan '.$service['title'].'.') }}"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="btn-primary"
+                                            >
+                                                Tanya layanan ini
+                                                <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M5 12h14" />
+                                                    <path d="m12 5 7 7-7 7" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
-                        </div>
-                    </header>
-
-                    <p class="max-w-3xl border-t border-border/70 pt-5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                        {{ $service['description'] }}
-                    </p>
-
-                    <div class="grid gap-6 border-t border-border/70 pt-5 sm:grid-cols-2 sm:gap-8">
-                        <div class="space-y-3">
-                            <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                Cakupan kerja
-                            </h3>
-                            <ul class="grid gap-2 text-sm text-foreground sm:grid-cols-2 sm:gap-x-4">
-                                @foreach ($service['items'] as $item)
-                                    <li class="flex items-start gap-2.5">
-                                        <svg class="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="20 6 9 17 4 12" />
-                                        </svg>
-                                        {{ $item }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <div class="space-y-3">
-                            <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                Cocok untuk
-                            </h3>
-                            <ul class="flex flex-wrap gap-2">
-                                @foreach ($service['for'] as $fit)
-                                    <li class="inline-flex items-center rounded-full border border-primary/15 bg-primary/5 px-3 py-1.5 text-xs font-medium text-primary sm:text-sm">
-                                        {{ $fit }}
-                                    </li>
-                                @endforeach
-                            </ul>
                         </div>
                     </div>
-
-                    @if (! empty($service['pricing']['tiers']))
-                        <div class="border-t border-border/70 pt-5">
-                            <div class="flex items-baseline gap-2">
-                                <h3 class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                                    {{ $service['pricing']['label'] ?? 'Harga' }}
-                                </h3>
-                                <span class="text-xs text-muted-foreground/70">— bisa nego sesuai lingkup</span>
-                            </div>
-
-                            <ul class="mt-3 grid gap-2 sm:grid-cols-3 sm:gap-3">
-                                @foreach ($service['pricing']['tiers'] as $tier)
-                                    <li class="flex flex-col justify-between gap-3 rounded-xl border border-border/80 bg-muted/40 px-4 py-3.5">
-                                        <div class="space-y-1">
-                                            <p class="text-sm font-medium text-foreground">{{ $tier['name'] }}</p>
-                                            <p class="text-xs leading-relaxed text-muted-foreground">{{ $tier['note'] }}</p>
-                                        </div>
-                                        <p class="font-heading text-base font-semibold tracking-tight text-primary sm:text-lg">
-                                            {{ $tier['price'] }}
-                                        </p>
-                                    </li>
-                                @endforeach
-                            </ul>
-
-                            <div class="mt-4">
-                                <a
-                                    href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan '.$service['title'].'.') }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="btn-primary"
-                                >
-                                    Tanya layanan ini
-                                    <svg aria-hidden="true" class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M5 12h14" />
-                                        <path d="m12 5 7 7-7 7" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-            </article>
-        @endforeach
+                </article>
+            @endforeach
+        </div>
     </section>
 
-    <section class="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:pb-20">
+    <section class="mx-auto w-full max-w-5xl px-4 pb-8 sm:px-6 sm:pb-14 lg:px-8 lg:pb-20">
         <article class="card-bento reveal overflow-hidden border-primary/20 bg-gradient-to-br from-primary via-primary to-accent text-on-primary" data-reveal>
             <div class="absolute inset-0 bg-[radial-gradient(ellipse_60%_80%_at_80%_20%,rgba(255,255,255,0.1),transparent_60%)]" aria-hidden="true"></div>
             <div class="relative flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
@@ -209,31 +242,62 @@
     @php $faq = config('content.faq', []); @endphp
     @if (! empty($faq))
         <section class="border-t border-border/60 bg-muted/30" aria-labelledby="faq-heading">
-            <div class="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-                <p class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-primary">
-                    FAQ
-                </p>
-                <h2 id="faq-heading" class="mt-4 font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                    Pertanyaan yang sering muncul
-                </h2>
+            <div class="mx-auto w-full max-w-5xl px-4 py-8 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+                <div class="grid gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-14">
+                    <div class="space-y-4">
+                        <p class="pill-badge">FAQ</p>
+                        <h2 id="faq-heading" class="font-heading text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                            Pertanyaan yang sering muncul
+                        </h2>
+                        <p class="text-sm leading-relaxed text-muted-foreground">
+                            Belum terjawab di sini? Tanya langsung lewat WhatsApp — dibalas secepatnya.
+                        </p>
+                        <a href="{{ route('kontak') }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition hover:gap-2.5">
+                            Ke halaman kontak
+                            <svg class="size-4" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
 
-                <div class="mt-6 space-y-2.5 sm:mt-8" data-stagger>
-                    @foreach ($faq as $item)
-                        <details class="faq-item reveal group overflow-hidden rounded-xl border border-border/60 bg-card/80 backdrop-blur-sm transition-shadow duration-200 open:shadow-card sm:rounded-2xl" data-reveal>
-                            <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 text-sm font-semibold text-foreground marker:hidden transition-colors duration-200 hover:bg-muted/50 sm:px-5 sm:text-base">
-                                {{ $item['question'] }}
-                                <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary transition-transform duration-200 group-open:rotate-45" aria-hidden="true">
-                                    <svg class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 5v14" />
-                                        <path d="M5 12h14" />
-                                    </svg>
-                                </span>
-                            </summary>
-                            <p class="px-4 pb-4 text-sm leading-relaxed text-muted-foreground sm:px-5">
-                                {{ $item['answer'] }}
-                            </p>
-                        </details>
-                    @endforeach
+                    <div class="space-y-2.5">
+                        @foreach ($faq as $faqIndex => $item)
+                            <div
+                                class="accordion-item reveal rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm transition-shadow duration-200 has-[.is-open]:shadow-card"
+                                data-accordion-item
+                                data-reveal
+                                style="transition-delay: {{ $faqIndex * 50 }}ms"
+                            >
+                                <h3 class="m-0">
+                                    <button
+                                        type="button"
+                                        class="flex w-full items-center gap-3 px-4 py-4 text-left text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-muted/40 sm:px-5 sm:text-base"
+                                        data-accordion-trigger
+                                        aria-expanded="false"
+                                        aria-controls="faq-panel-{{ $faqIndex }}"
+                                    >
+                                        <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-bold text-primary" aria-hidden="true">
+                                            {{ $faqIndex + 1 }}
+                                        </span>
+                                        <span class="flex-1">{{ $item['question'] }}</span>
+                                        <span class="flex size-7 shrink-0 items-center justify-center rounded-full border border-border/70 bg-muted/50 text-muted-foreground" aria-hidden="true">
+                                            <svg class="accordion-chevron size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m6 9 6 6 6-6" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </h3>
+                                <div class="accordion-panel" id="faq-panel-{{ $faqIndex }}" role="region">
+                                    <div class="accordion-inner">
+                                        <p class="border-l-2 border-primary/30 px-4 pb-4 pl-6 text-sm leading-relaxed text-muted-foreground sm:px-5 sm:pl-7">
+                                            {{ $item['answer'] }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </section>

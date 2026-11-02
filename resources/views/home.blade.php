@@ -16,7 +16,7 @@
                         <span class="absolute inline-flex size-full animate-ping rounded-full bg-secondary opacity-75"></span>
                         <span class="relative inline-flex size-1.5 rounded-full bg-secondary"></span>
                     </span>
-                    NgodingLagi?
+                    LagiNgoding?
                 </p>
 
                 <h1 id="hero-heading" class="animate-rise-in font-heading text-[2.05rem] font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-[2.75rem] sm:leading-[1.06] lg:text-[3.75rem]" style="animation-delay: 70ms">
@@ -128,7 +128,7 @@
                             </svg>
                         </div>
                         <h2 id="profil-heading" class="font-heading text-xl font-semibold tracking-tight text-foreground">
-                            Tentang ngodinglagi
+                            Tentang LagiNgoding
                         </h2>
                     </div>
                     <p class="text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -182,7 +182,7 @@
                                 Mulai {{ data_get($services, '0.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan Web Development & Deployment.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan Web Development & Deployment.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
@@ -225,7 +225,7 @@
                                 Mulai {{ data_get($services, '1.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan SA-MP / Open.MP.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan SA-MP / Open.MP.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
@@ -267,7 +267,7 @@
                                 Mulai {{ data_get($services, '2.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo ngodinglagi, saya ingin tanya layanan VPS & Server Admin.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan VPS & Server Admin.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"

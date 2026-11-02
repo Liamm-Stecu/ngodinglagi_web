@@ -10,8 +10,8 @@ class HomePageTest extends TestCase
     {
         $this->get(route('home'))
             ->assertOk()
-            ->assertSee('ngodinglagi')
-            ->assertSee('NgodingLagi?')
+            ->assertSee('LagiNgoding')
+            ->assertSee('LagiNgoding?')
             ->assertSee('23')
             ->assertSee('8');
     }
@@ -29,7 +29,7 @@ class HomePageTest extends TestCase
     {
         $this->get(route('about'))
             ->assertOk()
-            ->assertSee('Kenali ngodinglagi')
+            ->assertSee('Kenali LagiNgoding')
             ->assertSee((string) config('portfolio.stats.samp'))
             ->assertSee((string) config('portfolio.stats.web'));
     }
@@ -95,7 +95,7 @@ class HomePageTest extends TestCase
         $response = $this->get(route('layanan'))->assertOk();
 
         $this->assertStringContainsString(
-            'text='.rawurlencode('Halo ngodinglagi, saya ingin tanya layanan Web Development & Deployment.'),
+            'text='.rawurlencode('Halo LagiNgoding, saya ingin tanya layanan Web Development & Deployment.'),
             $response->getContent()
         );
     }

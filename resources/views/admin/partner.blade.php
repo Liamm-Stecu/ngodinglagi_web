@@ -1,30 +1,27 @@
-@extends('admin.layout')
+@extends('admin.modal')
 
 @section('title', 'Mitra')
+@section('modal-eyebrow', 'Edit konten')
+@section('modal-title', 'Mitra')
+@section('modal-subtitle', 'Link affiliate Wide Host Media.')
+@section('modal-icon')
+<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+@endsection
 
 @section('content')
-<div class="mx-auto w-full max-w-4xl">
-    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-        <div class="animate-fade-up">
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-teal-700">Panel</p>
-            <h1 class="mt-1 font-heading text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl">Mitra</h1>
-            <p class="mt-1 text-sm text-slate-500">Edit link affiliate Wide Host Media.</p>
+<form method="POST" action="{{ route('admin.partner.update') }}" id="admin-edit-form" class="space-y-4">
+    @csrf
+
+    <div class="admin-card admin-card--compact space-y-4">
+        <div class="flex items-center gap-3">
+            <span class="admin-icon-chip size-9 shrink-0" aria-hidden="true">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </span>
+            <div>
+                <p class="admin-eyebrow">Affiliate</p>
+                <p class="admin-section-title">Paket hosting mitra</p>
+            </div>
         </div>
-        <a href="{{ route('admin.dashboard') }}" class="admin-btn admin-btn-ghost">← Dashboard</a>
-    </div>
-
-    @if (session('status'))
-        <div class="admin-flash animate-fade-up mb-4">{{ session('status') }}</div>
-    @endif
-
-    @if ($errors->any())
-        <div class="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-            {{ $errors->first() }}
-        </div>
-    @endif
-
-    <form method="POST" action="{{ route('admin.partner.update') }}" class="admin-card animate-rise-in space-y-4" style="animation-delay: 80ms">
-        @csrf
 
         <div>
             <label class="admin-label">Nama mitra</label>
@@ -34,12 +31,13 @@
         <div>
             <label class="admin-label">URL affiliate</label>
             <input class="admin-input" type="url" name="affiliate_url" value="{{ old('affiliate_url', data_get($products, 'affiliate_url')) }}" required>
+            <p class="mt-1.5 text-xs text-slate-400">Dipakai di kartu rekomendasi hosting halaman beranda.</p>
         </div>
+    </div>
+</form>
+@endsection
 
-        <div class="flex gap-3 pt-1">
-            <button type="submit" class="admin-btn">Simpan</button>
-            <a href="{{ route('home') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat website</a>
-        </div>
-    </form>
-</div>
+@section('modal-actions')
+    <button type="submit" form="admin-edit-form" class="admin-btn">Simpan</button>
+    <a href="{{ route('home') }}" class="admin-btn admin-btn-ghost" target="_blank">Lihat website</a>
 @endsection

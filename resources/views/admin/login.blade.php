@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="flex min-h-[calc(100vh-8rem)] items-center justify-center">
-    <div class="admin-card animate-rise-in w-full max-w-md overflow-hidden p-0">
+    <div class="admin-card admin-card--flush animate-rise-in w-full max-w-md overflow-hidden">
         <div class="relative overflow-hidden bg-linear-to-br from-teal-800 via-teal-700 to-cyan-800 px-8 py-10 text-white">
             <div class="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-white/10" aria-hidden="true"></div>
             <div class="pointer-events-none absolute -bottom-14 left-8 size-32 rounded-full bg-teal-400/20" aria-hidden="true"></div>
@@ -17,7 +17,7 @@
                         </svg>
                     </div>
                     <div>
-                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-200/90">ngodinglagi</p>
+                        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-teal-200/90">LagiNgoding</p>
                         <h1 class="font-heading text-2xl font-semibold tracking-tight">Admin panel</h1>
                     </div>
                 </div>

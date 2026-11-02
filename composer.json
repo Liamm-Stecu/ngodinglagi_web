@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "ngodinglagi/jasa-website",
+    "name": "lagingoding/jasa-website",
     "type": "project",
-    "description": "Website jasa ngodinglagi — web, SA-MP/Open.MP, VPS.",
-    "keywords": ["laravel", "ngodinglagi", "jasa"],
+    "description": "Website jasa LagiNgoding — web, SA-MP/Open.MP, VPS.",
+    "keywords": ["laravel", "LagiNgoding", "jasa"],
     "license": "MIT",
     "require": {
         "php": "^8.3",

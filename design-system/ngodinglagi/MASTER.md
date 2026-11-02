@@ -1,12 +1,12 @@
-# Design System Master File — ngodinglagi
+# Design System Master File — LagiNgoding
 
-> **LOGIC:** When building a specific page, first check `design-system/ngodinglagi/pages/[page-name].md`.
+> **LOGIC:** When building a specific page, first check `design-system/LagiNgoding/pages/[page-name].md`.
 > If that file exists, its rules **override** this Master file.
 > If not, strictly follow the rules below.
 
 ---
 
-**Project:** ngodinglagi  
+**Project:** LagiNgoding  
 **Updated:** 2026-10-16  
 **Stack:** Laravel 13 + Blade + Tailwind CSS v4 + Vite  
 **Design Dials:** Variance 3/10 (Centered / Minimal) | Motion 2/10 (Subtle) | Density 4/10 (Standard)
@@ -172,7 +172,7 @@ Hindari shadow tebal/blur besar. Border 1px `--color-border` wajib ada di setiap
 **Pattern ID:** `bento-grid-showcase`  
 **Section order:**
 
-1. **Welcome / intro** (opsional singkat) → fade-in nama `ngodinglagi`
+1. **Welcome / intro** (opsional singkat) → fade-in nama `LagiNgoding`
 2. **Hero card** (lebih besar) — identitas + one-liner + CTA utama
 3. **Bento supporting grid:**
    - Statistik nyata: 23 proyek SA-MP · 8 proyek website
@@ -257,7 +257,7 @@ Hindari shadow tebal/blur besar. Border 1px `--color-border` wajib ada di setiap
 
 ### Welcome animation (brief)
 
-1. Fade-in singkat teks **“ngodinglagi”** (opacity 0→1, ~400–500ms, ease-out)
+1. Fade-in singkat teks **“LagiNgoding”** (opacity 0→1, ~400–500ms, ease-out)
 2. Transisi lembut ke Bento Grid (fade/slide kecil y 8–12px, stagger kartu kecil 30–50ms)
 3. Total intro **jangan menahan akses** — konten tetap di DOM, accessible, dan tidak butuh klik untuk “masuk”
 4. Setelah intro selesai, tidak ada animasi loop/dekoratif
@@ -308,7 +308,7 @@ Atau pure CSS dengan `@media (prefers-reduced-motion: reduce) { animation: none;
 - [ ] Gap & radius konsisten; shadow sangat ringan
 - [ ] Palet muted mint/teal + bg off-white; tanpa neon
 - [ ] Font: Space Grotesk (heading) + DM Sans (body), base 16px
-- [ ] Welcome fade-in `ngodinglagi` singkat, tidak memblokir akses
+- [ ] Welcome fade-in `LagiNgoding` singkat, tidak memblokir akses
 - [ ] `prefers-reduced-motion` dihormati (intro & reveal)
 - [ ] Ikon SVG (Lucide/Heroicons), tanpa emoji
 - [ ] Kontras teks ≥ 4.5:1; focus-visible terlihat

@@ -1,6 +1,6 @@
 <x-layout
-    :title="'Changelog — ngodinglagi'"
-    description="Update terbaru dari ngodinglagi: fitur baru dan perbaikan website."
+    :title="'Changelog — LagiNgoding'"
+    description="Update terbaru dari LagiNgoding: fitur baru dan perbaikan website."
 >
     <section class="relative overflow-hidden border-b border-border/50">
         <div class="mesh-gradient" aria-hidden="true"></div>
@@ -19,7 +19,7 @@
                     Changelog
                 </h1>
                 <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                    Catatan perubahan dan peningkatan website ngodinglagi.
+                    Catatan perubahan dan peningkatan website LagiNgoding.
                 </p>
             </div>
         </div>

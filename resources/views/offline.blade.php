@@ -50,7 +50,7 @@
             </div>
 
             <a href="{{ route('home') }}" class="mt-10 font-heading text-sm font-semibold text-foreground transition-colors duration-200 hover:text-primary">
-                ngodinglagi
+                LagiNgoding
             </a>
         </div>
     </main>

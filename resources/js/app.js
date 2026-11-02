@@ -169,10 +169,32 @@ function initCopyButtons() {
     });
 }
 
+function initAccordions() {
+    const items = document.querySelectorAll('[data-accordion-item]');
+
+    if (!items.length) {
+        return;
+    }
+
+    items.forEach((item) => {
+        const trigger = item.querySelector('[data-accordion-trigger]');
+
+        if (!trigger) {
+            return;
+        }
+
+        trigger.addEventListener('click', () => {
+            const isOpen = item.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', String(isOpen));
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initHeaderScroll();
     initStatCounters();
     initThemeToggle();
     initCopyButtons();
+    initAccordions();
 });

@@ -1,6 +1,6 @@
 <x-layout
-    :title="'Kebijakan Privasi — ngodinglagi'"
-    description="Kebijakan privasi ngodinglagi: data apa yang dikumpulkan dan bagaimana digunakan."
+    :title="'Kebijakan Privasi — LagiNgoding'"
+    description="Kebijakan privasi LagiNgoding: data apa yang dikumpulkan dan bagaimana digunakan."
 >
     <section class="relative overflow-hidden border-b border-border/50">
         <div class="mesh-gradient" aria-hidden="true"></div>
@@ -40,7 +40,7 @@
 
             <section class="space-y-2">
                 <h2 class="font-heading text-base font-semibold text-foreground">2. Penggunaan data</h2>
-                <p>Data yang dikumpulkan <strong class="text-foreground">tidak dibagikan</strong> ke pihak ketiga, dijual, atau digunakan untuk keperluan lain di luar komunikasi terkait layanan ngodinglagi.</p>
+                <p>Data yang dikumpulkan <strong class="text-foreground">tidak dibagikan</strong> ke pihak ketiga, dijual, atau digunakan untuk keperluan lain di luar komunikasi terkait layanan LagiNgoding.</p>
             </section>
 
             <section class="space-y-2">

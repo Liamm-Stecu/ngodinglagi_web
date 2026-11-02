@@ -34,6 +34,27 @@ return [
 
     'changelog' => [
         [
+            'date' => '2026-10-22',
+            'title' => 'Rebranding & redesain menyeluruh',
+            'items' => [
+                'Rebranding NgodingLagi menjadi LagiNgoding di seluruh website',
+                'Redesain halaman Layanan dengan accordion per layanan & daftar harga',
+                'Halaman Tentang & Kontak ditata ulang lebih rapi dan ringkas',
+                'Form edit panel admin kini berupa popup, tampilan admin diperbarui',
+                'Header floating pill dan footer 4 kolom untuk semua halaman',
+            ],
+        ],
+        [
+            'date' => '2026-10-20',
+            'title' => 'Fitur baru: inbox, halaman legal & backup',
+            'items' => [
+                'Form kontak tersimpan ke database + inbox pesan di panel admin',
+                'Halaman privasi, ketentuan, dan changelog dengan footer & sitemap',
+                'FAQ interaktif, tombol WhatsApp mengambang, dan favicon',
+                'Backup database otomatis harian (db:backup) & analytics opsional',
+            ],
+        ],
+        [
             'date' => '2026-10-19',
             'title' => 'Perbaikan tampilan mobile & halaman error',
             'items' => [
@@ -44,7 +65,7 @@ return [
         ],
         [
             'date' => '2026-10-18',
-            'title' => 'Peluncuran website ngodinglagi',
+            'title' => 'Peluncuran website LagiNgoding',
             'items' => [
                 'Halaman beranda, layanan, tentang, dan kontak',
                 'Panel admin untuk edit konten (layanan, tentang, mitra)',

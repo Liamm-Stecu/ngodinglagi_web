@@ -1,6 +1,6 @@
-# ngodinglagi — jasa website
+# LagiNgoding — jasa website
 
-Website company profile **ngodinglagi**: jasa web development, SA-MP/Open.MP development, dan VPS/server administration.
+Website company profile **LagiNgoding**: jasa web development, SA-MP/Open.MP development, dan VPS/server administration.
 
 **Stack:** Laravel 13 · PHP 8.3 · Blade · Tailwind CSS v4 · Vite · SQLite
 

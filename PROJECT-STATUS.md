@@ -1,4 +1,4 @@
-# PROJECT-STATUS.md — ngodinglagi
+# PROJECT-STATUS.md — LagiNgoding
 
 > Diperbarui: 2026-10-18. Hanya berisi status yang bisa diverifikasi. Hal yang belum diuji ditandai eksplisit.
 
@@ -6,7 +6,7 @@
 
 | Item | Nilai |
 |------|--------|
-| Nama folder | `jasa-website` (brand UI: **ngodinglagi**) |
+| Nama folder | `jasa-website` (brand UI: **LagiNgoding**) |
 | Backend | Laravel **13.37**, PHP **8.3** |
 | Frontend | Blade + Tailwind CSS **v4** + Vite **8** (tanpa SPA/Inertia) |
 | Font | Space Grotesk (heading) + DM Sans (body) via `laravel-vite-plugin/fonts` (bunny) |
@@ -35,7 +35,7 @@ config/admin.php                   → password admin (env ADMIN_PASSWORD)
 app/Http/Middleware/AdminAuth.php  → proteksi /admin
 app/Http/Controllers/Admin/*       → controller panel
 app/Support/ConfigWriter.php       → tulis config dari admin
-design-system/ngodinglagi/MASTER.md → source of truth desain
+design-system/LagiNgoding/MASTER.md → source of truth desain
 vite.config.js                     → font + input CSS/JS
 ```
 
@@ -53,10 +53,10 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 
 ## Design system
 
-- File: `design-system/ngodinglagi/MASTER.md`
+- File: `design-system/LagiNgoding/MASTER.md`
 - Karakter: Bento Grid, bg off-white `#F8FAFC`, aksen teal `#0F766E` / `#0D9488`
-- Badge hero: teks **"NgodingLagi?"**
-- Belum ada `design-system/ngodinglagi/pages/*.md`
+- Badge hero: teks **"LagiNgoding?"**
+- Belum ada `design-system/LagiNgoding/pages/*.md`
 
 ## Fitur selesai
 
@@ -69,7 +69,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 
 ### `/about` (dulu `/portofolio`, redirect 301)
 - Stats 23 SA-MP / 8 website (count-up)
-- "Siapa ngodinglagi" + prinsip kerja (4 kartu)
+- "Siapa LagiNgoding" + prinsip kerja (4 kartu)
 - 3 bidang (SA-MP, Website, VPS) dengan daftar kemampuan — **tanpa nama proyek karangan**
 - CTA kontak
 
@@ -77,7 +77,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Header hero + strip alur kerja 3 langkah (Diskusi → Dikerjakan → Diserahkan) — tiap langkah rise-in stagger
 - 3 kartu detail layanan dengan icon chip, deskripsi, cakupan kerja, cocok untuk — reveal scale
 - **Harga placeholder** per tier ("Mulai dari") — edit via admin
-- **CTA WhatsApp kontekstual** per layanan (`WaLink` pre-fill: "Halo ngodinglagi, saya ingin tanya layanan …")
+- **CTA WhatsApp kontekstual** per layanan (`WaLink` pre-fill: "Halo LagiNgoding, saya ingin tanya layanan …")
 - CTA
 
 ### `/kontak`
@@ -85,7 +85,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 
 ### `/admin` (panel — **tanpa nav publik**)
 - Akses: ketik `/admin` di URL (tidak muncul di menu website)
-- Login password dari `ADMIN_PASSWORD` di `.env` (default `ngodinglagi123` — **ganti di production**)
+- Login password dari `ADMIN_PASSWORD` di `.env` (default `LagiNgoding123` — **ganti di production**)
 - **Rate limit login: 5 attempt/menit per IP** (`throttle:admin-login`), reset saat login sukses
 - Middleware `admin` + layout **sidebar gelap** + view login standalone (hero gradien teal)
 - Dashboard: KPI count-up (proyek, layanan, tier harga, kategori), **donut chart** komposisi SA-MP vs website (SVG), **bar chart** harga tier (tanpa library), pintasan edit
@@ -127,7 +127,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Ikuti `AGENTS.md` (Laravel Boost): Pint setelah edit PHP, `search-docs` sebelum API Laravel, jangan tambah dependency tanpa approval
 - **Jangan buka folder di luar `jasa-website`** (permintaan user)
 - Skill relevan: `ui-ux-pro-max`, `tailwindcss-development`, `laravel-best-practices`
-- Selalu baca `design-system/ngodinglagi/MASTER.md` sebelum ubah UI
+- Selalu baca `design-system/LagiNgoding/MASTER.md` sebelum ubah UI
 - Kontak: edit via `/admin/kontak` atau `config/contact.php`
 - Harga layanan: edit via `/admin/layanan` atau `config/services.php`
 - Affiliate: edit via `/admin/mitra` atau `config/products.php`

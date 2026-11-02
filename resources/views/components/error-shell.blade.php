@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         @php
-            $pageTitle = ($title ?? 'Error').' — ngodinglagi';
+            $pageTitle = ($title ?? 'Error').' — LagiNgoding';
             $pageDescription = $description ?? 'Jasa web development, SA-MP/Open.MP, dan VPS/server administration.';
         @endphp
 

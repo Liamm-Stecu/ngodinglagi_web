@@ -131,6 +131,22 @@ class AdminPanelTest extends TestCase
             ->assertSee('affiliate_url');
     }
 
+    public function test_modal_icon_renders_as_svg_not_escaped_text(): void
+    {
+        foreach ([
+            'admin.contact.edit',
+            'admin.services.edit',
+            'admin.portfolio.edit',
+            'admin.partner.edit',
+        ] as $route) {
+            $this->actingAsAdmin()
+                ->get(route($route))
+                ->assertOk()
+                ->assertSee('<svg class="size-5"', false)
+                ->assertDontSee('&lt;svg', false);
+        }
+    }
+
     public function test_admin_can_add_and_remove_service(): void
     {
         $original = ConfigWriter::read('services');

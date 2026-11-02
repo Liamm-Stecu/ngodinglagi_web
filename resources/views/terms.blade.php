@@ -1,6 +1,6 @@
 <x-layout
-    :title="'Syarat & Ketentuan — ngodinglagi'"
-    description="Syarat dan ketentuan penggunaan layanan ngodinglagi."
+    :title="'Syarat & Ketentuan — LagiNgoding'"
+    description="Syarat dan ketentuan penggunaan layanan LagiNgoding."
 >
     <section class="relative overflow-hidden border-b border-border/50">
         <div class="mesh-gradient" aria-hidden="true"></div>
@@ -29,7 +29,7 @@
         <div class="space-y-8 text-sm leading-relaxed text-muted-foreground">
             <section class="space-y-2">
                 <h2 class="font-heading text-base font-semibold text-foreground">1. Lingkup layanan</h2>
-                <p>ngodinglagi menyediakan jasa pengembangan website, pengembangan SA-MP/Open.MP, dan administrasi VPS/server. Setiap proyek memiliki lingkup kerja yang disepakati sebelum pengerjaan dimulai.</p>
+                <p>LagiNgoding menyediakan jasa pengembangan website, pengembangan SA-MP/Open.MP, dan administrasi VPS/server. Setiap proyek memiliki lingkup kerja yang disepakati sebelum pengerjaan dimulai.</p>
             </section>
 
             <section class="space-y-2">
@@ -44,7 +44,7 @@
 
             <section class="space-y-2">
                 <h2 class="font-heading text-base font-semibold text-foreground">4. Hak kekayaan intelektual</h2>
-                <p>Setelah pelunasan, hak atas hasil pengerjaan (kode, desain) berpindah ke klien. ngodinglagi berhak menampilkan hasil kerja di portofolio/website kecuali diminta tidak.</p>
+                <p>Setelah pelunasan, hak atas hasil pengerjaan (kode, desain) berpindah ke klien. LagiNgoding berhak menampilkan hasil kerja di portofolio/website kecuali diminta tidak.</p>
             </section>
 
             <section class="space-y-2">

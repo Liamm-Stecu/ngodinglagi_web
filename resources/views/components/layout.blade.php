@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         @php
-            $pageTitle = $title ?? 'ngodinglagi — Jasa Web, SA-MP/Open.MP & VPS';
+            $pageTitle = $title ?? 'LagiNgoding — Jasa Web, SA-MP/Open.MP & VPS';
             $pageDescription = $description ?? 'Jasa web development, SA-MP/Open.MP development, dan VPS/server administration. Komunikasi jelas, hasil siap dipakai.';
             $canonicalUrl = url()->current();
         @endphp
@@ -15,7 +15,7 @@
         <link rel="canonical" href="{{ $canonicalUrl }}">
 
         <meta property="og:type" content="website">
-        <meta property="og:site_name" content="ngodinglagi">
+        <meta property="og:site_name" content="LagiNgoding">
         <meta property="og:locale" content="id_ID">
         <meta property="og:title" content="{{ $pageTitle }}">
         <meta property="og:description" content="{{ $pageDescription }}">
@@ -51,7 +51,7 @@
         <script type="application/ld+json">{!! json_encode([
             '@context' => 'https://schema.org',
             '@type' => 'ProfessionalService',
-            'name' => 'ngodinglagi',
+            'name' => 'LagiNgoding',
             'description' => 'Jasa web development, SA-MP/Open.MP development, dan VPS/server administration.',
             'url' => route('home'),
             'telephone' => config('contact.whatsapp.display'),
@@ -101,7 +101,7 @@
                     </span>
                     <span class="font-heading text-base font-semibold tracking-tight sm:text-lg">
                         <span class="relative">
-                            ngodinglagi
+                            LagiNgoding
                             <span
                                 class="absolute -bottom-0.5 left-0 h-0.5 w-0 rounded-full bg-primary transition-all duration-300 ease-out group-hover:w-full"
                                 aria-hidden="true"
@@ -208,7 +208,7 @@
                                     <path d="m14 5 5 14" />
                                 </svg>
                             </span>
-                            <p class="font-heading text-base font-semibold text-foreground">ngodinglagi</p>
+                            <p class="font-heading text-base font-semibold text-foreground">LagiNgoding</p>
                         </div>
                         <p class="max-w-xs text-sm leading-relaxed text-muted-foreground">
                             Bantuan teknis untuk website, SA-MP/Open.MP, dan VPS — komunikasi jelas, hasil siap dipakai.
@@ -280,7 +280,7 @@
                 </div>
 
                 <div class="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-6 sm:flex-row">
-                    <p class="text-sm text-muted-foreground/80">&copy; {{ date('Y') }} ngodinglagi. Semua hak dilindungi.</p>
+                    <p class="text-sm text-muted-foreground/80">&copy; {{ date('Y') }} LagiNgoding. Semua hak dilindungi.</p>
                     <p class="text-sm text-muted-foreground/60">Dibuat dengan <span class="text-primary" aria-hidden="true">♥</span> di Indonesia</p>
                 </div>
             </div>
