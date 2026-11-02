@@ -123,5 +123,7 @@ class HomePageTest extends TestCase
         $this->assertStringContainsString('twitter:card', $response->getContent());
         $this->assertStringContainsString('ProfessionalService', $response->getContent());
         $this->assertStringContainsString('application/ld+json', $response->getContent());
+        $this->assertStringContainsString('"@context":"https://schema.org"', $response->getContent());
+        $this->assertStringNotContainsString('$__contextArgs', $response->getContent());
     }
 }

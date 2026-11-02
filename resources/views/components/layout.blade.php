@@ -49,7 +49,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <script type="application/ld+json">{!! json_encode([
-            '@context' => 'https://schema.org',
+            '@@context' => 'https://schema.org',
             '@type' => 'ProfessionalService',
             'name' => 'LagiNgoding',
             'description' => 'Jasa web development, SA-MP/Open.MP development, dan VPS/server administration.',
