@@ -20,12 +20,12 @@
                 </p>
 
                 <h1 id="hero-heading" class="animate-rise-in font-heading text-[2.05rem] font-semibold leading-[1.08] tracking-[-0.02em] text-foreground sm:text-[2.75rem] sm:leading-[1.06] lg:text-[3.75rem]" style="animation-delay: 70ms">
-                    Bantuan teknis<br class="hidden sm:block">
-                    yang <span class="relative text-primary">rapi &amp; jelas<span class="absolute -bottom-1 left-0 h-1 w-full rounded-full bg-primary/15" aria-hidden="true"></span></span>
+                    Start building<br class="hidden sm:block">
+                    your <span class="relative text-primary">website<span class="absolute -bottom-1 left-0 h-1 w-full rounded-full bg-primary/15" aria-hidden="true"></span></span>
                 </h1>
 
                 <p class="animate-rise-in max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                    Website, server game SA-MP/Open.MP, dan infrastruktur VPS — dikerjakan tanpa drama, komunikasi jelas dari awal.
+                    Website, server game SA-MP/Open.MP, infrastruktur VPS, sampai editing video &amp; foto — dikerjakan tanpa drama, komunikasi jelas dari awal.
                 </p>
 
                 <div class="animate-rise-in flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3" style="animation-delay: 210ms">
@@ -42,7 +42,7 @@
                 </div>
 
                 <ul class="animate-rise-in flex flex-wrap gap-1.5 pt-1 sm:gap-2" style="animation-delay: 280ms" aria-label="Bidang layanan">
-                    @foreach (['Web', 'SA-MP / Open.MP', 'VPS & Server'] as $tag)
+                    @foreach (['Web', 'SA-MP / Open.MP', 'VPS & Server', 'Editing'] as $tag)
                         <li class="rounded-full border border-border bg-card px-2.5 py-1 text-[11px] font-medium text-muted-foreground sm:px-3 sm:text-xs">
                             {{ $tag }}
                         </li>
@@ -132,7 +132,7 @@
                         </h2>
                     </div>
                     <p class="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                        Fokus pada jasa teknologi untuk individu, komunitas game, dan bisnis: website, SA-MP/Open.MP, serta setup VPS. Komunikasi jelas, hasil yang bisa dipakai.
+                        Fokus pada jasa teknologi untuk individu, komunitas game, dan bisnis: website, SA-MP/Open.MP, setup VPS, serta editing video &amp; foto. Komunikasi jelas, hasil yang bisa dipakai.
                     </p>
                 </div>
 
@@ -280,6 +280,52 @@
                             </a>
                         </div>
                     </article>
+
+                    <article
+                        class="card-bento card-bento-hover card-accent-top reveal flex flex-col gap-3 sm:col-span-2"
+                        data-reveal
+                        style="transition-delay: 180ms"
+                        aria-labelledby="layanan-editing"
+                    >
+                        <div class="flex items-start justify-between gap-3">
+                            <div class="flex size-10 items-center justify-center rounded-xl bg-muted text-primary" aria-hidden="true">
+                                <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                                    <path d="M7 3v18" />
+                                    <path d="M17 3v18" />
+                                    <path d="M3 7.5h4" />
+                                    <path d="M3 12h18" />
+                                    <path d="M3 16.5h4" />
+                                    <path d="M17 7.5h4" />
+                                    <path d="M17 16.5h4" />
+                                </svg>
+                            </div>
+                            <span class="font-heading text-xs font-medium uppercase tracking-widest text-muted-foreground/70" aria-hidden="true">04</span>
+                        </div>
+                        <div class="space-y-1.5">
+                            <h3 id="layanan-editing" class="font-heading text-lg font-semibold tracking-tight text-foreground sm:text-lg">
+                                Video &amp; Photo Editing
+                            </h3>
+                            <p class="text-sm leading-relaxed text-muted-foreground">
+                                Montase, short-form, thumbnail, color grading, dan retouch foto untuk konten kamu.
+                            </p>
+                            <p class="text-xs font-medium text-primary">
+                                Mulai {{ data_get($services, '3.pricing.tiers.0.price', '') }}
+                            </p>
+                            <a
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan Video & Photo Editing.') }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
+                            >
+                                Tanya via WhatsApp
+                                <svg aria-hidden="true" class="size-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </div>
@@ -345,7 +391,7 @@
                         Diskusikan proyek Anda
                     </h2>
                     <p class="max-w-xl text-sm leading-relaxed text-on-primary/90 sm:text-base">
-                        Butuh website, bantuan server game, atau setup VPS? Ceritakan kebutuhannya — kita bahas lingkup kerja yang jelas dari awal.
+                        Butuh website, bantuan server game, setup VPS, atau editing konten? Ceritakan kebutuhannya — kita bahas lingkup kerja yang jelas dari awal.
                     </p>
 
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">

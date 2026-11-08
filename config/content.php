@@ -34,6 +34,15 @@ return [
 
     'changelog' => [
         [
+            'date' => '2026-11-02',
+            'title' => 'Layanan baru: Video & Photo Editing',
+            'items' => [
+                'Layanan editing video & foto ditambahkan (montase, short-form, thumbnail, retouch)',
+                'Judul tiap halaman kini lebih menarik dalam Bahasa Inggris',
+                'Navigasi mobile diperbaiki dengan menu hamburger',
+            ],
+        ],
+        [
             'date' => '2026-10-22',
             'title' => 'Rebranding & redesain menyeluruh',
             'items' => [

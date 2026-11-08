@@ -190,6 +190,56 @@ function initAccordions() {
     });
 }
 
+function initMobileNav() {
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const panel = document.querySelector('[data-nav-panel]');
+
+    if (!toggle || !panel) {
+        return;
+    }
+
+    const iconOpen = toggle.querySelector('[data-nav-icon="open"]');
+    const iconClose = toggle.querySelector('[data-nav-icon="close"]');
+
+    const setOpen = (open) => {
+        panel.classList.toggle('hidden', !open);
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Tutup menu navigasi' : 'Buka menu navigasi');
+
+        if (iconOpen) {
+            iconOpen.classList.toggle('hidden', open);
+        }
+
+        if (iconClose) {
+            iconClose.classList.toggle('hidden', !open);
+        }
+    };
+
+    toggle.addEventListener('click', () => {
+        setOpen(panel.classList.contains('hidden'));
+    });
+
+    panel.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            setOpen(false);
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (panel.classList.contains('hidden')) {
+            return;
+        }
+
+        if (!panel.contains(event.target) && !toggle.contains(event.target)) {
+            setOpen(false);
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initHeaderScroll();
@@ -197,4 +247,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initCopyButtons();
     initAccordions();
+    initMobileNav();
 });

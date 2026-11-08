@@ -22,6 +22,7 @@ class AdminPortfolioController extends Controller
         $request->validate([
             'stats.samp' => ['required', 'integer', 'min:0'],
             'stats.web' => ['required', 'integer', 'min:0'],
+            'stats.editing' => ['required', 'integer', 'min:0'],
             'categories' => ['required', 'array', 'min:1'],
             'categories.*.slug' => ['required', 'string', 'max:50'],
             'categories.*.title' => ['required', 'string', 'max:100'],
@@ -44,6 +45,7 @@ class AdminPortfolioController extends Controller
             'stats' => [
                 'samp' => (int) $request->input('stats.samp'),
                 'web' => (int) $request->input('stats.web'),
+                'editing' => (int) $request->input('stats.editing'),
             ],
             'categories' => $categories,
         ]);
@@ -65,7 +67,7 @@ class AdminPortfolioController extends Controller
         ];
 
         ConfigWriter::write('portfolio', [
-            'stats' => $portfolio['stats'] ?? ['samp' => 0, 'web' => 0],
+            'stats' => $portfolio['stats'] ?? ['samp' => 0, 'web' => 0, 'editing' => 0],
             'categories' => $categories,
         ]);
 
@@ -84,7 +86,7 @@ class AdminPortfolioController extends Controller
         unset($categories[$index]);
 
         ConfigWriter::write('portfolio', [
-            'stats' => $portfolio['stats'] ?? ['samp' => 0, 'web' => 0],
+            'stats' => $portfolio['stats'] ?? ['samp' => 0, 'web' => 0, 'editing' => 0],
             'categories' => array_values($categories),
         ]);
 

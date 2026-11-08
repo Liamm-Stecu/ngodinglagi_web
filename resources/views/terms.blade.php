@@ -16,7 +16,7 @@
                     Legal
                 </p>
                 <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
-                    Syarat &amp; Ketentuan
+                    Terms of Service
                 </h1>
                 <p class="animate-rise-in text-sm text-muted-foreground" style="animation-delay: 140ms">
                     Terakhir diperbarui: 20 Oktober 2026

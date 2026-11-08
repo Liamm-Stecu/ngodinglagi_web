@@ -16,7 +16,7 @@
                     Update
                 </p>
                 <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
-                    Changelog
+                    What's New
                 </h1>
                 <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Catatan perubahan dan peningkatan website LagiNgoding.

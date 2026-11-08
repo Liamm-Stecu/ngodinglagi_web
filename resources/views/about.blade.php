@@ -16,10 +16,10 @@
                 <div class="space-y-4 lg:col-span-7">
                     <p class="pill-badge animate-rise-in">Tentang</p>
                     <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
-                        Kenali LagiNgoding
+                        Meet LagiNgoding
                     </h1>
                     <p class="animate-rise-in max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                        Bantuan teknis untuk website, server game SA-MP/Open.MP, dan infrastruktur VPS —
+                        Bantuan teknis untuk website, server game SA-MP/Open.MP, infrastruktur VPS, dan editing video &amp; foto —
                         dikerjakan tanpa drama, dengan komunikasi jelas dari awal sampai selesai.
                     </p>
                     <div class="animate-rise-in flex flex-wrap gap-3" style="animation-delay: 210ms">
@@ -67,6 +67,28 @@
                                 <rect width="18" height="18" x="3" y="3" rx="2" />
                                 <path d="M3 9h18" />
                                 <path d="M9 21V9" />
+                            </svg>
+                        </span>
+                    </div>
+
+                    <div class="card-glass animate-rise-in flex items-end justify-between gap-3 p-4 sm:col-span-2 sm:p-6" style="animation-delay: 400ms" aria-label="Total pengalaman editing">
+                        <div>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Editing</p>
+                            <p class="mt-1 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-5xl" data-count-to="{{ $stats['editing'] }}">
+                                {{ $stats['editing'] }}
+                            </p>
+                            <p class="mt-1 text-sm text-muted-foreground">Pengalaman editing</p>
+                        </div>
+                        <span class="flex size-11 items-center justify-center rounded-xl bg-muted text-primary" aria-hidden="true">
+                            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="18" x="3" y="3" rx="2" />
+                                <path d="M7 3v18" />
+                                <path d="M17 3v18" />
+                                <path d="M3 7.5h4" />
+                                <path d="M3 12h18" />
+                                <path d="M3 16.5h4" />
+                                <path d="M17 7.5h4" />
+                                <path d="M17 16.5h4" />
                             </svg>
                         </span>
                     </div>

@@ -14,7 +14,7 @@
             <div class="max-w-2xl space-y-4">
                 <p class="pill-badge animate-rise-in">Kontak</p>
                 <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
-                    Ngobrol dulu aja
+                    Got a Project? Let's Talk
                 </h1>
                 <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
                     Pilih kanal yang paling nyaman. Ceritakan kebutuhannya — kita bahas lingkup kerja yang jelas sebelum mulai.
@@ -224,7 +224,7 @@
                     </h2>
                     <ul class="space-y-3 text-sm text-muted-foreground">
                         @foreach ([
-                            'Sebutkan jenis kebutuhan: website, SA-MP/Open.MP, atau VPS.',
+                            'Sebutkan jenis kebutuhan: website, SA-MP/Open.MP, VPS, atau editing.',
                             'Kalau sudah ada deadline atau referensi, cantumkan sekilas.',
                             'Untuk server game, sebutkan jumlah player & fitur yang diinginkan.',
                         ] as $tip)

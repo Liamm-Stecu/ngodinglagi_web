@@ -111,7 +111,7 @@
                 </a>
 
                 <div class="flex items-center gap-1 sm:gap-1.5">
-                    <nav aria-label="Navigasi utama" class="min-w-0">
+                    <nav aria-label="Navigasi utama" class="hidden min-w-0 sm:block">
                         <ul class="flex items-center gap-0.5 sm:gap-1">
                         <li>
                             <a
@@ -137,7 +137,7 @@
                                 Layanan
                             </a>
                         </li>
-                        <li class="hidden sm:block">
+                        <li>
                             <a
                                 href="{{ route('about') }}"
                                 @class([
@@ -189,7 +189,85 @@
                         <path d="m19.07 4.93-1.41 1.41" />
                     </svg>
                 </button>
+
+                <button
+                    type="button"
+                    data-nav-toggle
+                    aria-expanded="false"
+                    aria-controls="mobile-nav"
+                    aria-label="Buka menu navigasi"
+                    class="inline-flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-all duration-200 hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:hidden"
+                >
+                    <svg data-nav-icon="open" class="size-4" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" x2="20" y1="6" y2="6" />
+                        <line x1="4" x2="20" y1="12" y2="12" />
+                        <line x1="4" x2="20" y1="18" y2="18" />
+                    </svg>
+                    <svg data-nav-icon="close" class="hidden size-4" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                    </svg>
+                </button>
                 </div>
+            </div>
+
+            <div
+                id="mobile-nav"
+                data-nav-panel
+                class="mx-auto mt-2 hidden w-full max-w-5xl overflow-hidden rounded-2xl border border-border/60 bg-background/95 shadow-card backdrop-blur-xl sm:hidden"
+            >
+                <nav aria-label="Navigasi mobile" class="p-2">
+                    <ul class="grid gap-1">
+                        <li>
+                            <a
+                                href="{{ route('home') }}"
+                                @class([
+                                    'flex min-h-11 items-center rounded-xl px-3.5 text-sm font-medium transition-colors duration-200',
+                                    'bg-primary/10 text-primary' => request()->routeIs('home'),
+                                    'text-foreground hover:bg-muted' => ! request()->routeIs('home'),
+                                ])
+                            >
+                                Beranda
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="{{ route('layanan') }}"
+                                @class([
+                                    'flex min-h-11 items-center rounded-xl px-3.5 text-sm font-medium transition-colors duration-200',
+                                    'bg-primary/10 text-primary' => request()->routeIs('layanan'),
+                                    'text-foreground hover:bg-muted' => ! request()->routeIs('layanan'),
+                                ])
+                            >
+                                Layanan
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="{{ route('about') }}"
+                                @class([
+                                    'flex min-h-11 items-center rounded-xl px-3.5 text-sm font-medium transition-colors duration-200',
+                                    'bg-primary/10 text-primary' => request()->routeIs('about'),
+                                    'text-foreground hover:bg-muted' => ! request()->routeIs('about'),
+                                ])
+                            >
+                                Tentang
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="{{ route('kontak') }}"
+                                @class([
+                                    'flex min-h-11 items-center justify-center rounded-xl px-3.5 text-sm font-semibold transition-colors duration-200',
+                                    'bg-primary text-on-primary hover:bg-accent' => ! request()->routeIs('kontak'),
+                                    'bg-foreground text-background' => request()->routeIs('kontak'),
+                                ])
+                            >
+                                Kontak
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </header>
 
@@ -231,6 +309,11 @@
                             <li>
                                 <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
                                     VPS / Server
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
+                                    Video &amp; Photo Editing
                                 </a>
                             </li>
                         </ul>

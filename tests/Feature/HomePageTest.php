@@ -12,6 +12,8 @@ class HomePageTest extends TestCase
             ->assertOk()
             ->assertSee('LagiNgoding')
             ->assertSee('LagiNgoding?')
+            ->assertSee('Start building')
+            ->assertSee('Video & Photo Editing')
             ->assertSee('23')
             ->assertSee('8');
     }
@@ -29,9 +31,10 @@ class HomePageTest extends TestCase
     {
         $this->get(route('about'))
             ->assertOk()
-            ->assertSee('Kenali LagiNgoding')
+            ->assertSee('Meet LagiNgoding')
             ->assertSee((string) config('portfolio.stats.samp'))
-            ->assertSee((string) config('portfolio.stats.web'));
+            ->assertSee((string) config('portfolio.stats.web'))
+            ->assertSee((string) config('portfolio.stats.editing'));
     }
 
     public function test_old_portofolio_redirects_to_about(): void
@@ -44,7 +47,7 @@ class HomePageTest extends TestCase
     {
         $this->get(route('kontak'))
             ->assertOk()
-            ->assertSee('Ngobrol dulu aja')
+            ->assertSee("Got a Project? Let's Talk", false)
             ->assertSee(config('contact.whatsapp.display'), false)
             ->assertSee(config('contact.instagram.display'), false)
             ->assertSee(config('contact.discord.display'), false)
@@ -59,6 +62,16 @@ class HomePageTest extends TestCase
             ->assertDontSee('href="'.route('home', ['#kontak']).'"', false);
     }
 
+    public function test_mobile_nav_has_hamburger_menu(): void
+    {
+        $this->get(route('home'))
+            ->assertOk()
+            ->assertSee('data-nav-toggle', false)
+            ->assertSee('data-nav-panel', false)
+            ->assertSee('aria-controls="mobile-nav"', false)
+            ->assertSee('id="mobile-nav"', false);
+    }
+
     public function test_home_promotes_wide_host_media_affiliate(): void
     {
         $this->get(route('home'))
@@ -71,10 +84,13 @@ class HomePageTest extends TestCase
     {
         $this->get(route('layanan'))
             ->assertOk()
-            ->assertSee('Apa yang bisa')
+            ->assertSee('What We Can')
+            ->assertSee('Do for You')
             ->assertSee('Web Development & Deployment')
             ->assertSee('SA-MP / Open.MP Development')
-            ->assertSee('VPS & Server Administration');
+            ->assertSee('VPS & Server Administration')
+            ->assertSee('Video & Photo Editing')
+            ->assertSee('<path d="M7 3v18" />', false);
     }
 
     public function test_layanan_page_shows_pricing(): void

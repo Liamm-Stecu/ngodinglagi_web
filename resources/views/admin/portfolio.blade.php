@@ -29,6 +29,10 @@
                 <label class="admin-label">Proyek Website</label>
                 <input class="admin-input" type="number" min="0" name="stats[web]" value="{{ old('stats.web', data_get($portfolio, 'stats.web')) }}" required>
             </div>
+            <div class="sm:col-span-2">
+                <label class="admin-label">Pengalaman Editing</label>
+                <input class="admin-input" type="number" min="0" name="stats[editing]" value="{{ old('stats.editing', data_get($portfolio, 'stats.editing')) }}" required>
+            </div>
         </div>
     </div>
 

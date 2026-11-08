@@ -14,11 +14,11 @@
             <div class="max-w-2xl space-y-4">
                 <p class="pill-badge animate-rise-in">Layanan</p>
                 <h1 class="animate-rise-in font-heading text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl lg:text-5xl" style="animation-delay: 70ms">
-                    Apa yang bisa<br class="hidden sm:block">
-                    dikerjakan
+                    What We Can<br class="hidden sm:block">
+                    Do for You
                 </h1>
                 <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                    Tiga bidang utama: website, server game SA-MP/Open.MP, dan infrastruktur VPS. Klik salah satu untuk lihat lingkup kerja &amp; harga.
+                    Empat bidang utama: website, server game SA-MP/Open.MP, infrastruktur VPS, dan editing video &amp; foto. Klik salah satu untuk lihat lingkup kerja &amp; harga.
                 </p>
             </div>
 
@@ -75,6 +75,18 @@
                                             <path d="M15 12h.01" />
                                             <path d="M18 10h.01" />
                                             <path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z" />
+                                        </svg>
+                                        @break
+                                    @case('editing')
+                                        <svg class="size-5 sm:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect width="18" height="18" x="3" y="3" rx="2" />
+                                            <path d="M7 3v18" />
+                                            <path d="M17 3v18" />
+                                            <path d="M3 7.5h4" />
+                                            <path d="M3 12h18" />
+                                            <path d="M3 16.5h4" />
+                                            <path d="M17 7.5h4" />
+                                            <path d="M17 16.5h4" />
                                         </svg>
                                         @break
                                     @default
