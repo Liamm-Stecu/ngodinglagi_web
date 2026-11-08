@@ -21,19 +21,19 @@ return [
     'services' => [
         0 => [
             'slug' => 'web',
-            'title' => 'Web Development & Deployment',
-            'short' => 'Pembuatan website, deployment, domain, SSL, maintenance, dan troubleshooting.',
-            'description' => 'Dari landing page sampai website bisnis: dibuat, di-deploy, domain & SSL diurus, dan tetap dirawat kalau ada masalah.',
+            'title' => 'Build Website',
+            'short' => 'Pembuatan website: landing page, company profile, sampai custom — fokus ngoding.',
+            'description' => 'Fokus ngoding website dari nol: landing page, company profile, sampai custom website — responsif, rapi, dan siap dipakai.',
             'for' => [
                 0 => 'Bisnis / UMKM butuh website',
-                1 => 'Butuh redesign atau maintenance',
-                2 => 'Sudah punya domain & butuh hosting',
+                1 => 'Butuh redesign jadi lebih bagus',
+                2 => 'Butuh fitur custom di website',
             ],
             'items' => [
                 0 => 'Company profile & landing page',
-                1 => 'Deployment domain & SSL',
-                2 => 'Maintenance berkala',
-                3 => 'Troubleshooting error website',
+                1 => 'Custom fitur & integrasi',
+                2 => 'Form kontak, WA & API',
+                3 => 'Responsif & SEO dasar',
             ],
             'pricing' => [
                 'label' => 'Mulai dari',
@@ -95,34 +95,29 @@ return [
         ],
         2 => [
             'slug' => 'vps',
-            'title' => 'VPS & Server Administration',
-            'short' => 'Setup Linux, panel, web server, keamanan dasar, backup, dan troubleshooting.',
-            'description' => 'Setup infrastruktur Linux untuk web atau game server: panel, web server, security dasar, backup, sampai recovery.',
+            'title' => 'VPS Administrator',
+            'short' => 'Kelola VPS yang sudah jalan: update, monitoring, backup, keamanan, dan troubleshooting.',
+            'description' => 'Administrasi VPS/web server yang sudah berjalan: update & patch, monitoring, backup, keamanan dasar, sampai troubleshooting — server tetap stabil tanpa ribet.',
             'for' => [
-                0 => 'Butuh VPS tapi bingung setup',
+                0 => 'Punya VPS tapi belum terkelola',
                 1 => 'Game server / web server production',
-                2 => 'Perlu panel & backup yang rapi',
+                2 => 'Perlu monitoring & backup rutin',
             ],
             'items' => [
-                0 => 'Setup VPS Linux',
-                1 => 'Panel: CloudPanel / Pterodactyl',
-                2 => 'Web server & security dasar',
-                3 => 'Backup & recovery',
+                0 => 'Update & patch rutin',
+                1 => 'Monitoring & uptime',
+                2 => 'Backup & recovery',
+                3 => 'Keamanan dasar & troubleshooting',
             ],
             'pricing' => [
                 'label' => 'Mulai dari',
                 'tiers' => [
                     0 => [
-                        'name' => 'Setup VPS',
-                        'price' => 'Rp 250.000',
-                        'note' => 'Install OS, hardening, akses',
-                    ],
-                    1 => [
                         'name' => 'Panel + Web Server',
                         'price' => 'Rp 500.000',
                         'note' => 'CloudPanel / Nginx / SSL',
                     ],
-                    2 => [
+                    1 => [
                         'name' => 'Admin Bulanan',
                         'price' => 'Rp 750.000/bln',
                         'note' => 'Monitoring, update, backup',

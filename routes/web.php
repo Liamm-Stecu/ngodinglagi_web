@@ -97,8 +97,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/kontak', [AdminContactController::class, 'edit'])->name('admin.contact.edit');
         Route::post('/kontak', [AdminContactController::class, 'update'])->name('admin.contact.update');
         Route::get('/layanan', [AdminServicesController::class, 'edit'])->name('admin.services.edit');
-        Route::post('/layanan', [AdminServicesController::class, 'update'])->name('admin.services.update');
+        Route::get('/layanan/buat', [AdminServicesController::class, 'create'])->name('admin.services.create');
+        Route::get('/layanan/{index}/edit', [AdminServicesController::class, 'editOne'])->whereNumber('index')->name('admin.services.edit_one');
         Route::post('/layanan/tambah', [AdminServicesController::class, 'store'])->name('admin.services.store');
+        Route::post('/layanan/{index}', [AdminServicesController::class, 'update'])->whereNumber('index')->name('admin.services.update');
         Route::post('/layanan/hapus/{index}', [AdminServicesController::class, 'destroy'])->whereNumber('index')->name('admin.services.destroy');
         Route::post('/layanan/{index}/tier/tambah', [AdminServicesController::class, 'storeTier'])->whereNumber('index')->name('admin.services.tier.store');
         Route::post('/layanan/{index}/tier/hapus/{tierIndex}', [AdminServicesController::class, 'destroyTier'])->whereNumber('index')->whereNumber('tierIndex')->name('admin.services.tier.destroy');

@@ -18,7 +18,7 @@
                     Do for You
                 </h1>
                 <p class="animate-rise-in text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                    Empat bidang utama: website, server game SA-MP/Open.MP, infrastruktur VPS, dan editing video &amp; foto. Klik salah satu untuk lihat lingkup kerja &amp; harga.
+                    Empat bidang utama: website, server game SA-MP/Open.MP, administrasi VPS, dan editing video &amp; foto. Klik salah satu untuk lihat lingkup kerja &amp; harga.
                 </p>
             </div>
 
@@ -195,7 +195,7 @@
 
                                         <div class="mt-4">
                                             <a
-                                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan '.$service['title'].'.') }}"
+                                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin tanya layanan '.$service['title'].'.') }}"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 class="btn-primary"

@@ -86,9 +86,9 @@ class HomePageTest extends TestCase
             ->assertOk()
             ->assertSee('What We Can')
             ->assertSee('Do for You')
-            ->assertSee('Web Development & Deployment')
+            ->assertSee('Build Website')
             ->assertSee('SA-MP / Open.MP Development')
-            ->assertSee('VPS & Server Administration')
+            ->assertSee('VPS Administrator')
             ->assertSee('Video & Photo Editing')
             ->assertSee('<path d="M7 3v18" />', false);
     }
@@ -102,8 +102,8 @@ class HomePageTest extends TestCase
             ->assertSee('Rp 750.000')
             ->assertSee('Script Fitur')
             ->assertSee('Rp 150.000')
-            ->assertSee('Setup VPS')
-            ->assertSee('Rp 250.000');
+            ->assertSee('Panel + Web Server')
+            ->assertSee('Admin Bulanan');
     }
 
     public function test_layanan_page_has_contextual_whatsapp_cta(): void
@@ -111,7 +111,7 @@ class HomePageTest extends TestCase
         $response = $this->get(route('layanan'))->assertOk();
 
         $this->assertStringContainsString(
-            'text='.rawurlencode('Halo LagiNgoding, saya ingin tanya layanan Web Development & Deployment.'),
+            'text='.rawurlencode('Halo Marcel, saya ingin tanya layanan Build Website.'),
             $response->getContent()
         );
     }

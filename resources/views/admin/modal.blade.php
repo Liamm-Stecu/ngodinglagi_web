@@ -11,7 +11,7 @@
     @include('admin.partials.styles')
 </head>
 <body class="antialiased">
-    <div class="admin-modal-page" data-modal-backdrop data-dashboard-url="{{ route('admin.dashboard') }}">
+    <div class="admin-modal-page" data-modal-backdrop data-dashboard-url="@yield('modal-back-url', route('admin.dashboard'))">
         <div class="admin-modal @yield('modal-size', '')" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
             <header class="admin-modal-head">
                 <div class="flex min-w-0 items-start gap-3.5">

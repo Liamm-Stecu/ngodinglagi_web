@@ -48,11 +48,14 @@ class AdminPanelTest extends TestCase
             'admin.dashboard',
             'admin.contact.edit',
             'admin.services.edit',
+            'admin.services.create',
             'admin.portfolio.edit',
             'admin.partner.edit',
         ] as $route) {
             $this->get(route($route))->assertRedirect(route('admin.login'));
         }
+
+        $this->get(route('admin.services.edit_one', 0))->assertRedirect(route('admin.login'));
     }
 
     public function test_admin_dashboard_loads_when_authenticated(): void
@@ -136,6 +139,7 @@ class AdminPanelTest extends TestCase
         foreach ([
             'admin.contact.edit',
             'admin.services.edit',
+            'admin.services.create',
             'admin.portfolio.edit',
             'admin.partner.edit',
         ] as $route) {
@@ -145,6 +149,52 @@ class AdminPanelTest extends TestCase
                 ->assertSee('<svg class="size-5"', false)
                 ->assertDontSee('&lt;svg', false);
         }
+
+        $this->actingAsAdmin()
+            ->get(route('admin.services.edit_one', 0))
+            ->assertOk()
+            ->assertSee('<svg class="size-5"', false)
+            ->assertDontSee('&lt;svg', false);
+    }
+
+    public function test_admin_services_list_shows_per_service_edit_button(): void
+    {
+        $this->actingAsAdmin()
+            ->get(route('admin.services.edit'))
+            ->assertOk()
+            ->assertSee(route('admin.services.create'), false)
+            ->assertSee(route('admin.services.edit_one', 0), false)
+            ->assertDontSee('name="services[0][title]"', false);
+    }
+
+    public function test_admin_can_update_single_service(): void
+    {
+        $original = ConfigWriter::read('services');
+        $service = $original['services'][0];
+
+        try {
+            $this->actingAsAdmin()->post(route('admin.services.update', 0), [
+                'slug' => $service['slug'],
+                'title' => 'Judul Uji Edit',
+                'short' => $service['short'],
+                'description' => $service['description'],
+                'items_text' => implode("\n", $service['items']),
+                'for_text' => implode("\n", $service['for']),
+                'pricing' => [
+                    'label' => $service['pricing']['label'],
+                    'tiers' => $service['pricing']['tiers'],
+                ],
+            ])->assertRedirect(route('admin.services.edit'));
+
+            $updated = ConfigWriter::read('services')['services'][0];
+
+            $this->assertSame('Judul Uji Edit', $updated['title']);
+            $this->assertSame($service['slug'], $updated['slug']);
+            $this->assertSame($service['items'], $updated['items']);
+            $this->assertSame($service['pricing']['tiers'], $updated['pricing']['tiers']);
+        } finally {
+            ConfigWriter::write('services', $original);
+        }
     }
 
     public function test_admin_can_add_and_remove_service(): void
@@ -153,8 +203,19 @@ class AdminPanelTest extends TestCase
         $before = count($original['services'] ?? []);
 
         try {
-            $this->actingAsAdmin()->post(route('admin.services.store'))
-                ->assertRedirect(route('admin.services.edit'));
+            $this->actingAsAdmin()->post(route('admin.services.store'), [
+                'title' => 'Layanan Uji',
+                'short' => 'Singkat layanan uji.',
+                'description' => 'Deskripsi layanan uji.',
+                'items_text' => "Cakupan satu\nCakupan dua",
+                'for_text' => 'Kebutuhan uji',
+                'pricing' => [
+                    'label' => 'Mulai dari',
+                    'tiers' => [
+                        ['name' => 'Paket Uji', 'price' => 'Rp 1', 'note' => ''],
+                    ],
+                ],
+            ])->assertRedirect(route('admin.services.edit'));
 
             $this->assertCount($before + 1, ConfigWriter::read('services')['services']);
 
@@ -162,6 +223,32 @@ class AdminPanelTest extends TestCase
                 ->assertRedirect(route('admin.services.edit'));
 
             $this->assertCount($before, ConfigWriter::read('services')['services']);
+        } finally {
+            ConfigWriter::write('services', $original);
+        }
+    }
+
+    public function test_admin_can_add_and_remove_tier(): void
+    {
+        $original = ConfigWriter::read('services');
+        $before = count($original['services'][0]['pricing']['tiers']);
+
+        try {
+            $this->actingAsAdmin()->post(route('admin.services.tier.store', 0))
+                ->assertRedirect(route('admin.services.edit'));
+
+            $this->assertCount(
+                $before + 1,
+                ConfigWriter::read('services')['services'][0]['pricing']['tiers']
+            );
+
+            $this->actingAsAdmin()->post(route('admin.services.tier.destroy', [0, $before]))
+                ->assertRedirect(route('admin.services.edit'));
+
+            $this->assertCount(
+                $before,
+                ConfigWriter::read('services')['services'][0]['pricing']['tiers']
+            );
         } finally {
             ConfigWriter::write('services', $original);
         }

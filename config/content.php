@@ -34,6 +34,15 @@ return [
 
     'changelog' => [
         [
+            'date' => '2026-11-08',
+            'title' => 'Layanan lebih fokus',
+            'items' => [
+                'Layanan web difokuskan ke pembuatan website (Build Website)',
+                'Layanan VPS kini fokus administrasi & kelola server (VPS Administrator)',
+                'Panel admin: edit layanan per item lewat popup & tombol Buat layanan',
+            ],
+        ],
+        [
             'date' => '2026-11-02',
             'title' => 'Layanan baru: Video & Photo Editing',
             'items' => [

@@ -17,68 +17,50 @@ class AdminServicesController extends Controller
         ]);
     }
 
-    public function update(Request $request): RedirectResponse
+    public function create(): View
     {
-        $request->validate([
-            'services' => ['required', 'array', 'min:1'],
-            'services.*.slug' => ['required', 'string', 'max:50'],
-            'services.*.title' => ['required', 'string', 'max:100'],
-            'services.*.short' => ['required', 'string', 'max:200'],
-            'services.*.description' => ['required', 'string', 'max:500'],
-            'services.*.items_text' => ['required', 'string', 'max:2000'],
-            'services.*.for_text' => ['required', 'string', 'max:2000'],
-            'services.*.pricing.label' => ['nullable', 'string', 'max:50'],
-            'services.*.pricing.tiers' => ['required', 'array', 'min:1'],
-            'services.*.pricing.tiers.*.name' => ['required', 'string', 'max:80'],
-            'services.*.pricing.tiers.*.price' => ['required', 'string', 'max:40'],
-            'services.*.pricing.tiers.*.note' => ['nullable', 'string', 'max:150'],
+        return view('admin.service-create');
+    }
+
+    public function editOne(int $index): View
+    {
+        $services = ConfigWriter::read('services')['services'] ?? [];
+
+        abort_unless(isset($services[$index]), 404);
+
+        return view('admin.service-edit', [
+            'index' => $index,
+            'service' => $services[$index],
         ]);
+    }
 
-        $services = [];
+    public function update(Request $request, int $index): RedirectResponse
+    {
+        $services = ConfigWriter::read('services')['services'] ?? [];
 
-        foreach ($request->input('services', []) as $service) {
-            $services[] = [
-                'slug' => $service['slug'],
-                'title' => $service['title'],
-                'short' => $service['short'],
-                'description' => $service['description'],
-                'for' => self::splitLines($service['for_text'] ?? ''),
-                'items' => self::splitLines($service['items_text'] ?? ''),
-                'pricing' => [
-                    'label' => $service['pricing']['label'] ?? 'Mulai dari',
-                    'tiers' => array_map(fn (array $tier): array => [
-                        'name' => (string) $tier['name'],
-                        'price' => (string) $tier['price'],
-                        'note' => (string) ($tier['note'] ?? ''),
-                    ], $service['pricing']['tiers'] ?? []),
-                ],
-            ];
-        }
+        abort_unless(isset($services[$index]), 404);
+
+        $validated = $this->validateService($request);
+
+        $services[$index] = $this->buildService($validated, (string) $services[$index]['slug']);
 
         ConfigWriter::write('services', ['services' => $services]);
 
         return redirect()->route('admin.services.edit')->with('status', 'Layanan disimpan.');
     }
 
-    public function store(): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $services = ConfigWriter::read('services')['services'] ?? [];
-        $index = count($services) + 1;
 
-        $services[] = [
-            'slug' => 'layanan-'.$index,
-            'title' => 'Layanan Baru '.$index,
-            'short' => 'Deskripsi singkat layanan.',
-            'description' => 'Deskripsi lengkap layanan ini.',
-            'for' => ['Kebutuhan 1'],
-            'items' => ['Cakupan kerja 1'],
-            'pricing' => [
-                'label' => 'Mulai dari',
-                'tiers' => [
-                    ['name' => 'Paket A', 'price' => 'Rp 0', 'note' => 'Catatan paket'],
-                ],
-            ],
-        ];
+        $validated = $this->validateService($request);
+
+        $slug = self::uniqueSlug(
+            (string) ($request->input('slug') ?: 'layanan-'.(count($services) + 1)),
+            $services
+        );
+
+        $services[] = $this->buildService($validated, $slug);
 
         ConfigWriter::write('services', ['services' => $services]);
 
@@ -139,6 +121,74 @@ class AdminServicesController extends Controller
         ConfigWriter::write('services', ['services' => $services]);
 
         return redirect()->route('admin.services.edit')->with('status', 'Tier harga dihapus.');
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function validateService(Request $request): array
+    {
+        $request->validate([
+            'slug' => ['nullable', 'string', 'max:50'],
+            'title' => ['required', 'string', 'max:100'],
+            'short' => ['required', 'string', 'max:200'],
+            'description' => ['required', 'string', 'max:500'],
+            'items_text' => ['required', 'string', 'max:2000'],
+            'for_text' => ['required', 'string', 'max:2000'],
+            'pricing.label' => ['nullable', 'string', 'max:50'],
+            'pricing.tiers' => ['required', 'array', 'min:1'],
+            'pricing.tiers.*.name' => ['required', 'string', 'max:80'],
+            'pricing.tiers.*.price' => ['required', 'string', 'max:40'],
+            'pricing.tiers.*.note' => ['nullable', 'string', 'max:150'],
+        ]);
+
+        return $request->all();
+    }
+
+    /**
+     * @param  array<string, mixed>  $input
+     * @return array<string, mixed>
+     */
+    private function buildService(array $input, string $slug): array
+    {
+        return [
+            'slug' => $slug,
+            'title' => (string) $input['title'],
+            'short' => (string) $input['short'],
+            'description' => (string) $input['description'],
+            'for' => self::splitLines((string) ($input['for_text'] ?? '')),
+            'items' => self::splitLines((string) ($input['items_text'] ?? '')),
+            'pricing' => [
+                'label' => ((string) ($input['pricing']['label'] ?? '')) !== '' ? (string) $input['pricing']['label'] : 'Mulai dari',
+                'tiers' => array_map(fn (array $tier): array => [
+                    'name' => (string) $tier['name'],
+                    'price' => (string) $tier['price'],
+                    'note' => (string) ($tier['note'] ?? ''),
+                ], $input['pricing']['tiers'] ?? []),
+            ],
+        ];
+    }
+
+    /**
+     * @param  array<int, array<string, mixed>>  $services
+     */
+    private static function uniqueSlug(string $slug, array $services): string
+    {
+        $slug = strtolower(trim(preg_replace('/[^a-z0-9\-]+/i', '-', $slug), '-'));
+
+        if ($slug === '') {
+            $slug = 'layanan-baru';
+        }
+
+        $base = $slug;
+        $suffix = 1;
+
+        while (in_array($slug, array_column($services, 'slug'), true)) {
+            $suffix++;
+            $slug = $base.'-'.$suffix;
+        }
+
+        return $slug;
     }
 
     /**

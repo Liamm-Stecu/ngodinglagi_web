@@ -298,7 +298,7 @@
                         <ul class="space-y-1.5">
                             <li>
                                 <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
-                                    Web Development
+                                    Build Website
                                 </a>
                             </li>
                             <li>
@@ -308,7 +308,7 @@
                             </li>
                             <li>
                                 <a href="{{ route('layanan') }}" class="inline-flex min-h-8 items-center text-sm text-muted-foreground transition-colors duration-200 hover:text-foreground">
-                                    VPS / Server
+                                    VPS Administrator
                                 </a>
                             </li>
                             <li>

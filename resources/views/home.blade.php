@@ -25,7 +25,7 @@
                 </h1>
 
                 <p class="animate-rise-in max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                    Website, server game SA-MP/Open.MP, infrastruktur VPS, sampai editing video &amp; foto — dikerjakan tanpa drama, komunikasi jelas dari awal.
+                    Website, server game SA-MP/Open.MP, administrasi VPS, sampai editing video &amp; foto — dikerjakan tanpa drama, komunikasi jelas dari awal.
                 </p>
 
                 <div class="animate-rise-in flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3" style="animation-delay: 210ms">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <p class="text-sm leading-relaxed text-muted-foreground">
-                        Dari landing page sampai setup VPS production — lingkup kerja disepakati di awal, hasilnya bisa dipakai.
+                        Dari landing page sampai administrasi VPS production — lingkup kerja disepakati di awal, hasilnya bisa dipakai.
                     </p>
                 </article>
 
@@ -132,7 +132,7 @@
                         </h2>
                     </div>
                     <p class="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                        Fokus pada jasa teknologi untuk individu, komunitas game, dan bisnis: website, SA-MP/Open.MP, setup VPS, serta editing video &amp; foto. Komunikasi jelas, hasil yang bisa dipakai.
+                        Fokus pada jasa teknologi untuk individu, komunitas game, dan bisnis: website, SA-MP/Open.MP, administrasi VPS, serta editing video &amp; foto. Komunikasi jelas, hasil yang bisa dipakai.
                     </p>
                 </div>
 
@@ -173,16 +173,16 @@
                         </div>
                         <div class="space-y-1.5">
                             <h3 id="layanan-web" class="font-heading text-lg font-semibold tracking-tight text-foreground">
-                                Web Development &amp; Deployment
+                                Build Website
                             </h3>
                             <p class="text-sm leading-relaxed text-muted-foreground">
-                                Pembuatan website, deployment, domain, SSL, maintenance, dan troubleshooting.
+                                Pembuatan website: landing page, company profile, sampai custom — fokus ngoding.
                             </p>
                             <p class="text-xs font-medium text-primary">
                                 Mulai {{ data_get($services, '0.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan Web Development & Deployment.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin tanya layanan Build Website.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
@@ -225,7 +225,7 @@
                                 Mulai {{ data_get($services, '1.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan SA-MP / Open.MP.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin tanya layanan SA-MP / Open.MP.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
@@ -258,16 +258,16 @@
                         </div>
                         <div class="space-y-1.5">
                             <h3 id="layanan-vps" class="font-heading text-base font-semibold tracking-tight text-foreground sm:text-lg">
-                                VPS &amp; Server Admin
+                                VPS Administrator
                             </h3>
                             <p class="text-sm leading-relaxed text-muted-foreground">
-                                Setup Linux, panel, web server, keamanan dasar, backup, dan troubleshooting.
+                                Kelola VPS yang sudah jalan: update, monitoring, backup, keamanan dasar, dan troubleshooting.
                             </p>
                             <p class="text-xs font-medium text-primary">
                                 Mulai {{ data_get($services, '2.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan VPS & Server Admin.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin tanya layanan VPS Administrator.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
@@ -313,7 +313,7 @@
                                 Mulai {{ data_get($services, '3.pricing.tiers.0.price', '') }}
                             </p>
                             <a
-                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin tanya layanan Video & Photo Editing.') }}"
+                                href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin tanya layanan Video & Photo Editing.') }}"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-accent"
@@ -391,7 +391,7 @@
                         Diskusikan proyek Anda
                     </h2>
                     <p class="max-w-xl text-sm leading-relaxed text-on-primary/90 sm:text-base">
-                        Butuh website, bantuan server game, setup VPS, atau editing konten? Ceritakan kebutuhannya — kita bahas lingkup kerja yang jelas dari awal.
+                        Butuh website, bantuan server game, administrasi VPS, atau editing konten? Ceritakan kebutuhannya — kita bahas lingkup kerja yang jelas dari awal.
                     </p>
 
                     <div class="flex flex-col gap-3 pt-2 sm:flex-row">

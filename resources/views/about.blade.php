@@ -19,7 +19,7 @@
                         Meet LagiNgoding
                     </h1>
                     <p class="animate-rise-in max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-lg" style="animation-delay: 140ms">
-                        Bantuan teknis untuk website, server game SA-MP/Open.MP, infrastruktur VPS, dan editing video &amp; foto —
+                        Bantuan teknis untuk website, server game SA-MP/Open.MP, administrasi VPS, dan editing video &amp; foto —
                         dikerjakan tanpa drama, dengan komunikasi jelas dari awal sampai selesai.
                     </p>
                     <div class="animate-rise-in flex flex-wrap gap-3" style="animation-delay: 210ms">
