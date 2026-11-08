@@ -1,5 +1,5 @@
 @php
-    $waUrl = \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin bertanya tentang jasa yang tersedia.');
+    $waUrl = \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin bertanya tentang jasa yang tersedia.');
 @endphp
 
 <a

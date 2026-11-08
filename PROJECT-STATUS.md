@@ -77,7 +77,7 @@ Sumber data: `config/contact.php` (edit via `/admin/kontak`).
 - Header hero + strip alur kerja 3 langkah (Diskusi → Dikerjakan → Diserahkan) — tiap langkah rise-in stagger
 - 3 kartu detail layanan dengan icon chip, deskripsi, cakupan kerja, cocok untuk — reveal scale
 - **Harga placeholder** per tier ("Mulai dari") — edit via admin
-- **CTA WhatsApp kontekstual** per layanan (`WaLink` pre-fill: "Halo LagiNgoding, saya ingin tanya layanan …")
+- **CTA WhatsApp kontekstual** per layanan (`WaLink` pre-fill: "Halo Marcel, saya ingin tanya layanan …")
 - CTA
 
 ### `/kontak`

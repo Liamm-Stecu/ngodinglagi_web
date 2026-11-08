@@ -117,7 +117,7 @@
 
                         <p class="text-center text-xs text-muted-foreground">
                             Lebih suka chat langsung?
-                            <a href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin mendiskusikan kebutuhan saya.') }}" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary hover:underline">
+                            <a href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin mendiskusikan kebutuhan saya.') }}" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary hover:underline">
                                 WhatsApp aja
                             </a>
                         </p>
@@ -150,7 +150,7 @@
                     </p>
 
                     <a
-                        href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya ingin mendiskusikan kebutuhan saya.') }}"
+                        href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya ingin mendiskusikan kebutuhan saya.') }}"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn-primary w-full"
@@ -256,7 +256,7 @@
                             Belum terjawab di sini? Tanya langsung lewat WhatsApp — dibalas secepatnya.
                         </p>
                         <a
-                            href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo LagiNgoding, saya punya pertanyaan.') }}"
+                            href="{{ \App\Support\WaLink::make(config('contact.whatsapp.url'), 'Halo Marcel, saya punya pertanyaan.') }}"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition hover:gap-2.5"
